@@ -12,6 +12,10 @@
 		AC5A7CA32BF2184000A13991 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7CA22BF2184000A13991 /* ViewController.swift */; };
 		AC5A7CA82BF2184200A13991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC5A7CA72BF2184200A13991 /* Assets.xcassets */; };
 		AC5A7CAB2BF2184200A13991 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AC5A7CAA2BF2184200A13991 /* Base */; };
+		AC9B5A6A2BF373E50077635E /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A692BF373E50077635E /* FlexLayout */; };
+		AC9B5A6D2BF373EF0077635E /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A6C2BF373EF0077635E /* PinLayout */; };
+		AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A6E2BF374040077635E /* BaseViewController.swift */; };
+		AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A702BF3749E0077635E /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,8 @@
 		AC5A7CA72BF2184200A13991 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC5A7CAA2BF2184200A13991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC5A7CAC2BF2184200A13991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9B5A6E2BF374040077635E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		AC9B5A702BF3749E0077635E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9B5A6D2BF373EF0077635E /* PinLayout in Frameworks */,
+				AC9B5A6A2BF373E50077635E /* FlexLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				AC5A7CA22BF2184000A13991 /* ViewController.swift */,
+				AC9B5A672BF373C40077635E /* Base */,
 				AC5A7CB22BF218A100A13991 /* App */,
 			);
 			path = ToughCookie;
@@ -70,6 +79,15 @@
 				AC5A7CAC2BF2184200A13991 /* Info.plist */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		AC9B5A672BF373C40077635E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				AC9B5A702BF3749E0077635E /* BaseView.swift */,
+				AC9B5A6E2BF374040077635E /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,6 +106,10 @@
 			dependencies = (
 			);
 			name = ToughCookie;
+			packageProductDependencies = (
+				AC9B5A692BF373E50077635E /* FlexLayout */,
+				AC9B5A6C2BF373EF0077635E /* PinLayout */,
+			);
 			productName = ToughCookie;
 			productReference = AC5A7C9B2BF2184000A13991 /* ToughCookie.app */;
 			productType = "com.apple.product-type.application";
@@ -116,6 +138,10 @@
 				Base,
 			);
 			mainGroup = AC5A7C922BF2184000A13991;
+			packageReferences = (
+				AC9B5A682BF373E50077635E /* XCRemoteSwiftPackageReference "FlexLayout" */,
+				AC9B5A6B2BF373EF0077635E /* XCRemoteSwiftPackageReference "PinLayout" */,
+			);
 			productRefGroup = AC5A7C9C2BF2184000A13991 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,6 +169,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5A7CA32BF2184000A13991 /* ViewController.swift in Sources */,
+				AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */,
+				AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */,
 				AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */,
 				AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */,
 			);
@@ -294,7 +322,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = ToughCookie;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -328,7 +355,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = ToughCookie;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -371,6 +397,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC9B5A682BF373E50077635E /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.7;
+			};
+		};
+		AC9B5A6B2BF373EF0077635E /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC9B5A692BF373E50077635E /* FlexLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC9B5A682BF373E50077635E /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayout;
+		};
+		AC9B5A6C2BF373EF0077635E /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC9B5A6B2BF373EF0077635E /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC5A7C932BF2184000A13991 /* Project object */;
 }

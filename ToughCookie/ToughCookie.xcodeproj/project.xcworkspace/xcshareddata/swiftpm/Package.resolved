@@ -1,0 +1,24 @@
+{
+  "originHash" : "672b2804eb8e6bc1a224783feb648e218e6537233d9b94c5978be936934b44ca",
+  "pins" : [
+    {
+      "identity" : "flexlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/layoutBox/FlexLayout.git",
+      "state" : {
+        "revision" : "ad20f2874f0fe87300e89caed2f03d5c9525c3c0",
+        "version" : "2.0.7"
+      }
+    },
+    {
+      "identity" : "pinlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/layoutBox/PinLayout.git",
+      "state" : {
+        "revision" : "8eaa3a15e4dcabaca4c95aea4c0ff0c9b4a67213",
+        "version" : "1.10.5"
+      }
+    }
+  ],
+  "version" : 3
+}

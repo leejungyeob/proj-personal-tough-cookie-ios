@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = ViewController()
+        let rootVC = MarketsViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        
+        window.backgroundColor = .darkText
+        window.rootViewController = navVC
         window.makeKeyAndVisible()
         
         self.window = window

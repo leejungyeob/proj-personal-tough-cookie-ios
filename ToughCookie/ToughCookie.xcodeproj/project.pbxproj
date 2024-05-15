@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */; };
+		AC3248A72BF4E7AB00BEC811 /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */; };
 		AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7C9E2BF2184000A13991 /* AppDelegate.swift */; };
 		AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7CA02BF2184000A13991 /* SceneDelegate.swift */; };
-		AC5A7CA32BF2184000A13991 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7CA22BF2184000A13991 /* ViewController.swift */; };
 		AC5A7CA82BF2184200A13991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC5A7CA72BF2184200A13991 /* Assets.xcassets */; };
 		AC5A7CAB2BF2184200A13991 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AC5A7CAA2BF2184200A13991 /* Base */; };
 		AC9B5A6A2BF373E50077635E /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A692BF373E50077635E /* FlexLayout */; };
@@ -19,10 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
+		AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
 		AC5A7C9B2BF2184000A13991 /* ToughCookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToughCookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5A7C9E2BF2184000A13991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC5A7CA02BF2184000A13991 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AC5A7CA22BF2184000A13991 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC5A7CA72BF2184200A13991 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC5A7CAA2BF2184200A13991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC5A7CAC2BF2184200A13991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC3248A32BF4E6F600BEC811 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */,
+				AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
 		AC5A7C922BF2184000A13991 = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +73,7 @@
 		AC5A7C9D2BF2184000A13991 /* ToughCookie */ = {
 			isa = PBXGroup;
 			children = (
-				AC5A7CA22BF2184000A13991 /* ViewController.swift */,
+				AC3248A32BF4E6F600BEC811 /* Present */,
 				AC9B5A672BF373C40077635E /* Base */,
 				AC5A7CB22BF218A100A13991 /* App */,
 			);
@@ -168,8 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC5A7CA32BF2184000A13991 /* ViewController.swift in Sources */,
+				AC3248A72BF4E7AB00BEC811 /* MarketsView.swift in Sources */,
 				AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */,
+				AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */,
 				AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */,
 				AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */,
 				AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */,

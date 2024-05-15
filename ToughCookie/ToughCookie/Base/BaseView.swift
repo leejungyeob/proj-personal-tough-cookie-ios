@@ -17,6 +17,8 @@ class BaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configureView()
+        
         contentView.addSubview(flexView)
         
         addSubview(contentView)
@@ -29,11 +31,13 @@ class BaseView: UIView {
     
     override func layoutSubviews() {
         
-        contentView.pin.all()
+        contentView.pin.all(pin.safeArea)
         flexView.pin.top().horizontally()
         
         flexView.flex.layout(mode: .adjustHeight)
         
         contentView.contentSize = flexView.frame.size
     }
+    
+    func configureView() { }
 }

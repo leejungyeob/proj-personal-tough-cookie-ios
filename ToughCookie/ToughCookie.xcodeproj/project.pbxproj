@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */; };
 		AC3248A72BF4E7AB00BEC811 /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */; };
+		AC3248A92BF5103400BEC811 /* MarketsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3248A82BF5103400BEC811 /* MarketsTableViewCell.swift */; };
 		AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7C9E2BF2184000A13991 /* AppDelegate.swift */; };
 		AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7CA02BF2184000A13991 /* SceneDelegate.swift */; };
 		AC5A7CA82BF2184200A13991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC5A7CA72BF2184200A13991 /* Assets.xcassets */; };
@@ -17,11 +18,13 @@
 		AC9B5A6D2BF373EF0077635E /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A6C2BF373EF0077635E /* PinLayout */; };
 		AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A6E2BF374040077635E /* BaseViewController.swift */; };
 		AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A702BF3749E0077635E /* BaseView.swift */; };
+		ACA39E2E2BF6303C006BC6E4 /* MarketsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
 		AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
+		AC3248A82BF5103400BEC811 /* MarketsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsTableViewCell.swift; sourceTree = "<group>"; };
 		AC5A7C9B2BF2184000A13991 /* ToughCookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToughCookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5A7C9E2BF2184000A13991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC5A7CA02BF2184000A13991 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		AC5A7CAC2BF2184200A13991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC9B5A6E2BF374040077635E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AC9B5A702BF3749E0077635E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,8 @@
 			children = (
 				AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */,
 				AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */,
+				ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */,
+				AC3248A82BF5103400BEC811 /* MarketsTableViewCell.swift */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -184,7 +190,9 @@
 				AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */,
 				AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */,
 				AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */,
+				ACA39E2E2BF6303C006BC6E4 /* MarketsHeaderView.swift in Sources */,
 				AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */,
+				AC3248A92BF5103400BEC811 /* MarketsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

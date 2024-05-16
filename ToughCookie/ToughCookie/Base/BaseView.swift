@@ -11,17 +11,16 @@ import PinLayout
 
 class BaseView: UIView {
 
-    let contentView = UIScrollView()
     let flexView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .black
+        
         configureView()
         
-        contentView.addSubview(flexView)
-        
-        addSubview(contentView)
+        addSubview(flexView)
     }
     
     required init?(coder: NSCoder) {
@@ -30,13 +29,11 @@ class BaseView: UIView {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         
-        contentView.pin.all(pin.safeArea)
-        flexView.pin.top().horizontally()
+        flexView.pin.all()
         
-        flexView.flex.layout(mode: .adjustHeight)
-        
-        contentView.contentSize = flexView.frame.size
+        flexView.flex.layout()
     }
     
     func configureView() { }

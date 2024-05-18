@@ -44,4 +44,14 @@ enum CoordinatorType {
     
     case tab
     case markets
+    
+    var title: String {
+        
+        switch self {
+            
+        case .markets:
+            return "거래소"
+        default: return ""
+        }
+    }
 }

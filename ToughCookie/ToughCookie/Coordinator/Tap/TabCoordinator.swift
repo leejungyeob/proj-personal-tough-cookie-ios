@@ -61,8 +61,6 @@ extension TabCoordinator {
                                       image: iconImage,
                                       tag: page.toInt())
         
-        tabBarItem.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 13, weight: .bold)], for: .normal)
-        
         return tabBarItem
     }
     
@@ -71,8 +69,6 @@ extension TabCoordinator {
         let tabNavigationController = UINavigationController()
         
         tabNavigationController.setNavigationBarHidden(false, animated: false)
-        
-        tabNavigationController.navigationBar.topItem?.title = TabBarItemType(index: tabBarItem.tag)?.toName()
         
         tabNavigationController.tabBarItem = tabBarItem
         
@@ -100,7 +96,6 @@ extension TabCoordinator {
         
         self.tabBarController.selectedIndex = TabBarItemType.markets.toInt()
         
-        self.tabBarController.tabBar.backgroundColor = .systemBlue.withAlphaComponent(0.6)
         self.tabBarController.tabBar.tintColor = UIColor.white
     }
     

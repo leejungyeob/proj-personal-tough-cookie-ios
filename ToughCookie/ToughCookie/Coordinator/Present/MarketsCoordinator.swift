@@ -36,6 +36,8 @@ extension MarketsCoordinator {
     func start() {
         
         self.navigationController.pushViewController(self.marketsTabViewController, animated: false)
+        
+        self.navigationController.navigationBar.topItem?.title = coordinatorType.title
     }
 }
 

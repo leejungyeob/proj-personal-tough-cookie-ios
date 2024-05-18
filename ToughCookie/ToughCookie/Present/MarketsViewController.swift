@@ -14,16 +14,12 @@ class MarketsViewController: BaseViewController<MarketsView> {
     
     override func configureView() {
         
-        title = "거래소"
-        
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
         layoutView.tableView.dataSource = self
         layoutView.tableView.delegate = self
         layoutView.tableView.register(MarketsTableViewCell.self, forCellReuseIdentifier: "cell")
         
         let header = MarketsHeaderView()
-        header.backgroundColor = .black
+        header.backgroundColor = .clear
         
         layoutView.tableView.tableHeaderView = header
     }

@@ -15,6 +15,8 @@ class MarketsView: BaseView {
         
         tableView.backgroundColor = .clear
         
+        addSubview(tableView)
+        
         flexView.flex.define { flex in
             
             flex.addItem(tableView).grow(1)

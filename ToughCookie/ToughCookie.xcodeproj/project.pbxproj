@@ -32,6 +32,11 @@
 		ACA39E5C2BF8926D006BC6E4 /* UpbitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E5B2BF8926D006BC6E4 /* UpbitRouter.swift */; };
 		ACA39E612BF89825006BC6E4 /* FetchMarketAllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E602BF89825006BC6E4 /* FetchMarketAllData.swift */; };
 		ACA39E642BF89E50006BC6E4 /* UpbitAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E632BF89E50006BC6E4 /* UpbitAPIError.swift */; };
+		ACA39E682BF8B812006BC6E4 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E672BF8B812006BC6E4 /* LaunchView.swift */; };
+		ACA39E6A2BF8B81F006BC6E4 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E692BF8B81F006BC6E4 /* LaunchViewController.swift */; };
+		ACA39E6C2BF8B938006BC6E4 /* LaunchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E6B2BF8B938006BC6E4 /* LaunchCoordinator.swift */; };
+		ACA39E6E2BF8CD74006BC6E4 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E6D2BF8CD74006BC6E4 /* ViewModelProtocol.swift */; };
+		ACA39E702BF8CE87006BC6E4 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E6F2BF8CE87006BC6E4 /* LaunchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +62,11 @@
 		ACA39E5B2BF8926D006BC6E4 /* UpbitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitRouter.swift; sourceTree = "<group>"; };
 		ACA39E602BF89825006BC6E4 /* FetchMarketAllData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMarketAllData.swift; sourceTree = "<group>"; };
 		ACA39E632BF89E50006BC6E4 /* UpbitAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPIError.swift; sourceTree = "<group>"; };
+		ACA39E672BF8B812006BC6E4 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		ACA39E692BF8B81F006BC6E4 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		ACA39E6B2BF8B938006BC6E4 /* LaunchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCoordinator.swift; sourceTree = "<group>"; };
+		ACA39E6D2BF8CD74006BC6E4 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		ACA39E6F2BF8CE87006BC6E4 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +88,8 @@
 		AC3248A32BF4E6F600BEC811 /* Present */ = {
 			isa = PBXGroup;
 			children = (
-				AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */,
-				AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */,
-				ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */,
-				AC3248A82BF5103400BEC811 /* MarketsTableViewCell.swift */,
+				ACA39E662BF8B7F3006BC6E4 /* Launch */,
+				ACA39E652BF8B7E4006BC6E4 /* Markets */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				ACA39E4B2BF8675A006BC6E4 /* MarketsCoordinator.swift */,
+				ACA39E6B2BF8B938006BC6E4 /* LaunchCoordinator.swift */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -179,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				ACA39E582BF891D7006BC6E4 /* RouterProtocol.swift */,
+				ACA39E6D2BF8CD74006BC6E4 /* ViewModelProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -197,6 +207,27 @@
 				ACA39E632BF89E50006BC6E4 /* UpbitAPIError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		ACA39E652BF8B7E4006BC6E4 /* Markets */ = {
+			isa = PBXGroup;
+			children = (
+				AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */,
+				AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */,
+				ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */,
+				AC3248A82BF5103400BEC811 /* MarketsTableViewCell.swift */,
+			);
+			path = Markets;
+			sourceTree = "<group>";
+		};
+		ACA39E662BF8B7F3006BC6E4 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E6F2BF8CE87006BC6E4 /* LaunchViewModel.swift */,
+				ACA39E672BF8B812006BC6E4 /* LaunchView.swift */,
+				ACA39E692BF8B81F006BC6E4 /* LaunchViewController.swift */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,19 +315,24 @@
 			files = (
 				AC3248A72BF4E7AB00BEC811 /* MarketsView.swift in Sources */,
 				AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */,
+				ACA39E6C2BF8B938006BC6E4 /* LaunchCoordinator.swift in Sources */,
 				ACA39E4C2BF8675A006BC6E4 /* MarketsCoordinator.swift in Sources */,
 				ACA39E492BF8617C006BC6E4 /* TabBarItemType.swift in Sources */,
 				ACA39E462BF8609F006BC6E4 /* TabCoordinator.swift in Sources */,
 				ACA39E442BF85FCF006BC6E4 /* AppCoordinator.swift in Sources */,
 				ACA39E4F2BF88DB4006BC6E4 /* APIManager.swift in Sources */,
+				ACA39E682BF8B812006BC6E4 /* LaunchView.swift in Sources */,
+				ACA39E702BF8CE87006BC6E4 /* LaunchViewModel.swift in Sources */,
 				ACA39E612BF89825006BC6E4 /* FetchMarketAllData.swift in Sources */,
 				ACA39E592BF891D7006BC6E4 /* RouterProtocol.swift in Sources */,
 				ACA39E5C2BF8926D006BC6E4 /* UpbitRouter.swift in Sources */,
+				ACA39E6A2BF8B81F006BC6E4 /* LaunchViewController.swift in Sources */,
 				AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */,
 				AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */,
 				AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */,
 				ACA39E2E2BF6303C006BC6E4 /* MarketsHeaderView.swift in Sources */,
 				AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */,
+				ACA39E6E2BF8CD74006BC6E4 /* ViewModelProtocol.swift in Sources */,
 				AC3248A92BF5103400BEC811 /* MarketsTableViewCell.swift in Sources */,
 				ACA39E642BF89E50006BC6E4 /* UpbitAPIError.swift in Sources */,
 				ACA39E422BF85E49006BC6E4 /* Coordinator.swift in Sources */,

@@ -41,6 +41,7 @@ protocol CoordinatorFinishDelegate: AnyObject {
 enum CoordinatorType {
     
     case app
+    case launch
     
     case tab
     case markets

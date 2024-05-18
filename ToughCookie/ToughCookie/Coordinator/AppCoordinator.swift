@@ -10,6 +10,7 @@ import UIKit
 protocol AppCoordinatorProtocol: Coordinator {
     
     func showTabFlow()
+    func showLaunchFlow()
 }
 
 class AppCoordinator: AppCoordinatorProtocol {
@@ -32,7 +33,7 @@ extension AppCoordinator {
     
     func start() {
         
-        self.showTabFlow()
+        self.showLaunchFlow()
     }
     
     func showTabFlow() {
@@ -42,6 +43,15 @@ extension AppCoordinator {
         tabBarCoordinator.start()
         
         childCoordinators.append(tabBarCoordinator)
+    }
+    
+    func showLaunchFlow() {
+        
+        let launchCoordinator = LaunchCoordinator(navigationController)
+        launchCoordinator.finishDelegate = self
+        launchCoordinator.start()
+        
+        childCoordinators.append(launchCoordinator)
     }
 }
 
@@ -56,8 +66,10 @@ extension AppCoordinator: CoordinatorFinishDelegate {
         
         switch childCoordinator.coordinatorType {
             
-        case .tab:
-            print("Tab Bar Controller 종료")
+        case .launch:
+            navigationController.viewControllers.removeAll()
+            
+            showTabFlow()
         default: return
         }
     }

@@ -24,6 +24,14 @@
 		ACA39E462BF8609F006BC6E4 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E452BF8609F006BC6E4 /* TabCoordinator.swift */; };
 		ACA39E492BF8617C006BC6E4 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E482BF8617C006BC6E4 /* TabBarItemType.swift */; };
 		ACA39E4C2BF8675A006BC6E4 /* MarketsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E4B2BF8675A006BC6E4 /* MarketsCoordinator.swift */; };
+		ACA39E4F2BF88DB4006BC6E4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E4E2BF88DB4006BC6E4 /* APIManager.swift */; };
+		ACA39E522BF88DEA006BC6E4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ACA39E512BF88DEA006BC6E4 /* RxCocoa */; };
+		ACA39E542BF88DEA006BC6E4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ACA39E532BF88DEA006BC6E4 /* RxSwift */; };
+		ACA39E572BF88DFC006BC6E4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ACA39E562BF88DFC006BC6E4 /* Alamofire */; };
+		ACA39E592BF891D7006BC6E4 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E582BF891D7006BC6E4 /* RouterProtocol.swift */; };
+		ACA39E5C2BF8926D006BC6E4 /* UpbitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E5B2BF8926D006BC6E4 /* UpbitRouter.swift */; };
+		ACA39E612BF89825006BC6E4 /* FetchMarketAllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E602BF89825006BC6E4 /* FetchMarketAllData.swift */; };
+		ACA39E642BF89E50006BC6E4 /* UpbitAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E632BF89E50006BC6E4 /* UpbitAPIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +52,11 @@
 		ACA39E452BF8609F006BC6E4 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
 		ACA39E482BF8617C006BC6E4 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		ACA39E4B2BF8675A006BC6E4 /* MarketsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsCoordinator.swift; sourceTree = "<group>"; };
+		ACA39E4E2BF88DB4006BC6E4 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		ACA39E582BF891D7006BC6E4 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		ACA39E5B2BF8926D006BC6E4 /* UpbitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitRouter.swift; sourceTree = "<group>"; };
+		ACA39E602BF89825006BC6E4 /* FetchMarketAllData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMarketAllData.swift; sourceTree = "<group>"; };
+		ACA39E632BF89E50006BC6E4 /* UpbitAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA39E572BF88DFC006BC6E4 /* Alamofire in Frameworks */,
+				ACA39E522BF88DEA006BC6E4 /* RxCocoa in Frameworks */,
 				AC9B5A6D2BF373EF0077635E /* PinLayout in Frameworks */,
+				ACA39E542BF88DEA006BC6E4 /* RxSwift in Frameworks */,
 				AC9B5A6A2BF373E50077635E /* FlexLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +105,8 @@
 		AC5A7C9D2BF2184000A13991 /* ToughCookie */ = {
 			isa = PBXGroup;
 			children = (
+				ACA39E5A2BF8924D006BC6E4 /* Protocol */,
+				ACA39E4D2BF88D99006BC6E4 /* Network */,
 				ACA39E402BF85E3B006BC6E4 /* Coordinator */,
 				AC3248A32BF4E6F600BEC811 /* Present */,
 				AC9B5A672BF373C40077635E /* Base */,
@@ -146,6 +164,41 @@
 			path = Present;
 			sourceTree = "<group>";
 		};
+		ACA39E4D2BF88D99006BC6E4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E4E2BF88DB4006BC6E4 /* APIManager.swift */,
+				ACA39E5B2BF8926D006BC6E4 /* UpbitRouter.swift */,
+				ACA39E622BF89E3B006BC6E4 /* Error */,
+				ACA39E5D2BF897D2006BC6E4 /* DataModel */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		ACA39E5A2BF8924D006BC6E4 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E582BF891D7006BC6E4 /* RouterProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		ACA39E5D2BF897D2006BC6E4 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E602BF89825006BC6E4 /* FetchMarketAllData.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		ACA39E622BF89E3B006BC6E4 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E632BF89E50006BC6E4 /* UpbitAPIError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +218,9 @@
 			packageProductDependencies = (
 				AC9B5A692BF373E50077635E /* FlexLayout */,
 				AC9B5A6C2BF373EF0077635E /* PinLayout */,
+				ACA39E512BF88DEA006BC6E4 /* RxCocoa */,
+				ACA39E532BF88DEA006BC6E4 /* RxSwift */,
+				ACA39E562BF88DFC006BC6E4 /* Alamofire */,
 			);
 			productName = ToughCookie;
 			productReference = AC5A7C9B2BF2184000A13991 /* ToughCookie.app */;
@@ -197,6 +253,8 @@
 			packageReferences = (
 				AC9B5A682BF373E50077635E /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				AC9B5A6B2BF373EF0077635E /* XCRemoteSwiftPackageReference "PinLayout" */,
+				ACA39E502BF88DEA006BC6E4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				ACA39E552BF88DFC006BC6E4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = AC5A7C9C2BF2184000A13991 /* Products */;
 			projectDirPath = "";
@@ -230,12 +288,17 @@
 				ACA39E492BF8617C006BC6E4 /* TabBarItemType.swift in Sources */,
 				ACA39E462BF8609F006BC6E4 /* TabCoordinator.swift in Sources */,
 				ACA39E442BF85FCF006BC6E4 /* AppCoordinator.swift in Sources */,
+				ACA39E4F2BF88DB4006BC6E4 /* APIManager.swift in Sources */,
+				ACA39E612BF89825006BC6E4 /* FetchMarketAllData.swift in Sources */,
+				ACA39E592BF891D7006BC6E4 /* RouterProtocol.swift in Sources */,
+				ACA39E5C2BF8926D006BC6E4 /* UpbitRouter.swift in Sources */,
 				AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */,
 				AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */,
 				AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */,
 				ACA39E2E2BF6303C006BC6E4 /* MarketsHeaderView.swift in Sources */,
 				AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */,
 				AC3248A92BF5103400BEC811 /* MarketsTableViewCell.swift in Sources */,
+				ACA39E642BF89E50006BC6E4 /* UpbitAPIError.swift in Sources */,
 				ACA39E422BF85E49006BC6E4 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +542,22 @@
 				minimumVersion = 1.10.5;
 			};
 		};
+		ACA39E502BF88DEA006BC6E4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		ACA39E552BF88DFC006BC6E4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -491,6 +570,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC9B5A6B2BF373EF0077635E /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
+		};
+		ACA39E512BF88DEA006BC6E4 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACA39E502BF88DEA006BC6E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		ACA39E532BF88DEA006BC6E4 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACA39E502BF88DEA006BC6E4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		ACA39E562BF88DFC006BC6E4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACA39E552BF88DFC006BC6E4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

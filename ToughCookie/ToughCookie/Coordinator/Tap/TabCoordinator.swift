@@ -10,9 +10,11 @@ import UIKit
 protocol TabCoordinatorProtocol: Coordinator {
     
     var tabBarController: UITabBarController { get set }
+    
+    var marketAllData: [FetchMarketAllData] { get set }
 }
 
-class TabCoordinator: TabCoordinatorProtocol {
+final class TabCoordinator: TabCoordinatorProtocol {
     
     var tabBarController: UITabBarController
     
@@ -24,13 +26,17 @@ class TabCoordinator: TabCoordinatorProtocol {
     
     var finishDelegate: CoordinatorFinishDelegate?
     
+    var marketAllData: [FetchMarketAllData] = []
+    
     required init(_ navigationController: UINavigationController) {
         
         self.navigationController = navigationController
         self.tabBarController = UITabBarController()
     }
     
-    
+    deinit {
+        print("deinit - TabCoordinator")
+    }
 }
 
 extension TabCoordinator {
@@ -84,6 +90,7 @@ extension TabCoordinator {
         case .markets:
             
             let marketsCoordinator = MarketsCoordinator(tabNavigationController)
+            marketsCoordinator.marketAllData = marketAllData
             marketsCoordinator.finishDelegate = self
             self.childCoordinators.append(marketsCoordinator)
             marketsCoordinator.start()

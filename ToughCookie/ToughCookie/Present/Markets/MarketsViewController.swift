@@ -11,8 +11,20 @@ import RxCocoa
 
 class MarketsViewController: BaseViewController<MarketsView> {
     
+    var viewModel: MarketsViewModel
+    
     var total: [Int] = [1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
     var a = 3
+    
+    init(viewModel: MarketsViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func configureView() {
         

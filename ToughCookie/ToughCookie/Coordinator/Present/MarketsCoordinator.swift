@@ -9,12 +9,12 @@ import UIKit
 
 protocol MarketsCoordinatorProtocol: Coordinator {
     
-    var marketsTabViewController: MarketsViewController { get set }
+    var marketAllData: [FetchMarketAllData] { get set }
+    
+    func showMarketsTabView()
 }
 
 class MarketsCoordinator: MarketsCoordinatorProtocol {
-    
-    var marketsTabViewController: MarketsViewController
     
     var coordinatorType: CoordinatorType { .markets }
     
@@ -24,10 +24,15 @@ class MarketsCoordinator: MarketsCoordinatorProtocol {
     
     var finishDelegate: CoordinatorFinishDelegate?
     
+    var marketAllData: [FetchMarketAllData] = []
+    
     required init(_ navigationController: UINavigationController) {
         
         self.navigationController = navigationController
-        self.marketsTabViewController = MarketsViewController()
+    }
+    
+    deinit {
+        print("deinit - marketsCoordinator")
     }
 }
 
@@ -35,7 +40,17 @@ extension MarketsCoordinator {
     
     func start() {
         
-        self.navigationController.pushViewController(self.marketsTabViewController, animated: false)
+        showMarketsTabView()
+    }
+    
+    func showMarketsTabView() {
+        
+        guard !marketAllData.isEmpty else { return }
+        
+        let marketsViewModel = MarketsViewModel(coordinator: self, data: marketAllData)
+        let marketsViewController = MarketsViewController(viewModel: marketsViewModel)
+        
+        self.navigationController.pushViewController(marketsViewController, animated: false)
         
         self.navigationController.navigationBar.topItem?.title = coordinatorType.title
     }

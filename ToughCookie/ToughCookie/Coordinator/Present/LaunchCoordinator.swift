@@ -9,10 +9,12 @@ import UIKit
 
 protocol LaunchCoordinatorProtocol: Coordinator {
     
+    var marketAllData: [FetchMarketAllData] { get set }
+    
     func showLaunchView()
 }
 
-class LaunchCoordinator: LaunchCoordinatorProtocol {
+final class LaunchCoordinator: LaunchCoordinatorProtocol {
     
     var coordinatorType: CoordinatorType { .launch }
     
@@ -22,9 +24,17 @@ class LaunchCoordinator: LaunchCoordinatorProtocol {
     
     var finishDelegate: CoordinatorFinishDelegate?
     
+    var marketAllData: [FetchMarketAllData] = [] {
+        didSet { finish() }
+    }
+    
     required init(_ navigationController: UINavigationController) {
         
         self.navigationController = navigationController
+    }
+    
+    deinit {
+        print("deinit - launchCoordinator")
     }
 }
 
@@ -35,14 +45,16 @@ extension LaunchCoordinator {
         showLaunchView()
     }
     
+    /// Launch VC 연결
     func showLaunchView() {
      
         let launchViewModel = LaunchViewModel()
         let launchViewController = LaunchViewController(viewModel: launchViewModel)
         
+        launchViewModel.coordinator = self
+        
         navigationController.setNavigationBarHidden(true, animated: false)
         
         navigationController.setViewControllers([launchViewController], animated: true)
     }
-    
 }

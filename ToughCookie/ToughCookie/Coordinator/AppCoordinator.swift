@@ -9,7 +9,7 @@ import UIKit
 
 protocol AppCoordinatorProtocol: Coordinator {
     
-    func showTabFlow()
+    func showTabFlow(_ data: [FetchMarketAllData])
     func showLaunchFlow()
 }
 
@@ -36,9 +36,10 @@ extension AppCoordinator {
         self.showLaunchFlow()
     }
     
-    func showTabFlow() {
+    func showTabFlow(_ data: [FetchMarketAllData]) {
         
         let tabBarCoordinator = TabCoordinator(navigationController)
+        tabBarCoordinator.marketAllData = data
         tabBarCoordinator.finishDelegate = self
         tabBarCoordinator.start()
         
@@ -67,9 +68,15 @@ extension AppCoordinator: CoordinatorFinishDelegate {
         switch childCoordinator.coordinatorType {
             
         case .launch:
+            
+            guard let launchCoordinator = childCoordinator as? LaunchCoordinator else { return }
+            
+            let data = launchCoordinator.marketAllData
+            
             navigationController.viewControllers.removeAll()
             
-            showTabFlow()
+            showTabFlow(data)
+            
         default: return
         }
     }

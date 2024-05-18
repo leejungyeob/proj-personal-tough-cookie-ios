@@ -13,6 +13,8 @@ final class LaunchViewModel: ViewModelProtocol {
     
     var disposeBag: DisposeBag = DisposeBag()
     
+    var coordinator: LaunchCoordinator?
+    
     struct Input {
         
         let fetchMarketAll = PublishRelay<Void>()
@@ -20,15 +22,15 @@ final class LaunchViewModel: ViewModelProtocol {
     
     struct Output {
         
-        let marketAllDatas: Driver<[FetchMarketAllData]>
+        /// 업비트 API 조회 실패
         let fetchFailure: Driver<UpbitAPIError>
     }
     
     func transform(_ input: Input) -> Output {
         
-        let marketAllDatas = PublishRelay<[FetchMarketAllData]>()
         let fetchFailure = PublishRelay<UpbitAPIError>()
         
+        // Fetch Market All Datas - 업비트에서 거래 가능한 마켓 목록
         input.fetchMarketAll.flatMap { _ in
             
             return APIManager.callAPI(router: UpbitRouter.fetchMarketAll, dataModel: [FetchMarketAllData].self)
@@ -38,14 +40,14 @@ final class LaunchViewModel: ViewModelProtocol {
                 
             case .success(let data):
                 
-                marketAllDatas.accept(data)
+                owner.coordinator?.marketAllData = data
+                
             case .failure(let error):
                 
                 fetchFailure.accept(error)
             }
         }.disposed(by: disposeBag)
         
-        return Output(marketAllDatas: marketAllDatas.asDriver(onErrorJustReturn: []),
-                      fetchFailure: fetchFailure.asDriver(onErrorJustReturn: .fail))
+        return Output(fetchFailure: fetchFailure.asDriver(onErrorJustReturn: .fail))
     }
 }

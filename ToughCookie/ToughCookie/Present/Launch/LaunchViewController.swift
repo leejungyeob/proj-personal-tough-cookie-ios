@@ -34,12 +34,6 @@ class LaunchViewController: BaseViewController<LaunchView> {
         let input = LaunchViewModel.Input()
         let output = viewModel.transform(input)
         
-        // Markets VC 이동
-        output.marketAllDatas.drive(with: self) { owner, data in
-            
-            
-        }.disposed(by: disposeBag)
-        
         // API Error
         output.fetchFailure.drive(with: self) { owner, error in
             

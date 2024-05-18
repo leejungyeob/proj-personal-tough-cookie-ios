@@ -17,22 +17,19 @@ class BaseView: UIView {
         super.init(frame: frame)
         
         backgroundColor = .clear
+        addSubview(flexView)
         
         configureView()
-        
-        addSubview(flexView)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         flexView.pin.all()
-        
         flexView.flex.layout()
     }
     

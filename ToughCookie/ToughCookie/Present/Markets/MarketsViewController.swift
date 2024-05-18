@@ -43,7 +43,6 @@ class MarketsViewController: BaseViewController<MarketsView> {
 extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return total.count
     }
     
@@ -58,7 +57,6 @@ extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-             
         return UITableView.automaticDimension
     }
 }

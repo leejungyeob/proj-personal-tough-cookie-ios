@@ -44,17 +44,13 @@ extension TabCoordinator {
     func start() {
         
         let pages: [TabBarItemType] = TabBarItemType.allCases
-        
         let tabBarItems: [UITabBarItem] = pages.map { self.createTabBarItem(of: $0) }
-        
         let controllers: [UINavigationController] = tabBarItems.map {
             self.createTabNavigationController(tabBarItem: $0)
         }
-        
         let _ = controllers.map { self.startTabCoordinator(tabNavigationController: $0) }
         
         self.configureTabBarController(tabNavigationControllers: controllers)
-        
         self.addTabBarController()
     }
     
@@ -62,7 +58,6 @@ extension TabCoordinator {
         
         let iconImageConfiguration = UIImage.SymbolConfiguration(scale: .medium)
         let iconImage = UIImage(systemName: page.toIconName())?.withConfiguration(iconImageConfiguration)
-        
         let tabBarItem = UITabBarItem(title: page.toName(),
                                       image: iconImage,
                                       tag: page.toInt())
@@ -73,9 +68,7 @@ extension TabCoordinator {
     func createTabNavigationController(tabBarItem: UITabBarItem) -> UINavigationController {
         
         let tabNavigationController = UINavigationController()
-        
         tabNavigationController.setNavigationBarHidden(false, animated: false)
-        
         tabNavigationController.tabBarItem = tabBarItem
         
         return tabNavigationController
@@ -100,14 +93,11 @@ extension TabCoordinator {
     func configureTabBarController(tabNavigationControllers: [UINavigationController]) {
         
         self.tabBarController.setViewControllers(tabNavigationControllers, animated: false)
-        
         self.tabBarController.selectedIndex = TabBarItemType.markets.toInt()
-        
         self.tabBarController.tabBar.tintColor = UIColor.white
     }
     
     func addTabBarController() {
-        
         self.navigationController.pushViewController(self.tabBarController, animated: true)
     }
 }

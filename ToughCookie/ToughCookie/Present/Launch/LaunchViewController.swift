@@ -25,7 +25,6 @@ class LaunchViewController: BaseViewController<LaunchView> {
     }
     
     override func configureView() {
-        
         layoutView.indicator.startAnimating()
     }
     
@@ -36,7 +35,6 @@ class LaunchViewController: BaseViewController<LaunchView> {
         
         // API Error
         output.fetchFailure.drive(with: self) { owner, error in
-            
             
         }.disposed(by: disposeBag)
         

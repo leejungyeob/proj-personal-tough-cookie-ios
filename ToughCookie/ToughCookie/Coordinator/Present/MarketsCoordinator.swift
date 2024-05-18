@@ -27,7 +27,6 @@ class MarketsCoordinator: MarketsCoordinatorProtocol {
     var marketAllData: [FetchMarketAllData] = []
     
     required init(_ navigationController: UINavigationController) {
-        
         self.navigationController = navigationController
     }
     
@@ -39,7 +38,6 @@ class MarketsCoordinator: MarketsCoordinatorProtocol {
 extension MarketsCoordinator {
     
     func start() {
-        
         showMarketsTabView()
     }
     

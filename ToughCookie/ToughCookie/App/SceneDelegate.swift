@@ -14,12 +14,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        setAppearance()
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        
         let navVC = UINavigationController()
         
         window.rootViewController = navVC
@@ -30,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator.start()
         
         self.window = window
+        setAppearance()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

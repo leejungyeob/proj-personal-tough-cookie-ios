@@ -26,9 +26,7 @@ struct APIManager {
                     .responseDecodable(of: T.self) { response in
                         
                         switch response.result {
-                            
                         case .success(let success):
-                            
                             single(.success(.success(success)))
                             
                         case .failure(_):
@@ -41,7 +39,6 @@ struct APIManager {
                     }
                 
             } catch {
-            
                 single(.success(.failure(UpbitAPIError.invalidURL)))
             }
             

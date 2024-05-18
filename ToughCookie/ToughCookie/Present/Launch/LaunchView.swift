@@ -23,7 +23,6 @@ class LaunchView: BaseView {
         addSubview(indicator)
         
         logoImageView.image = UIImage.icon
-        
         indicator.color = .white
         
         flexView.flex.justifyContent(.center).define { flex in
@@ -42,7 +41,6 @@ class LaunchView: BaseView {
         super.layoutSubviews()
         
         flexView.pin.all()
-        
         flexView.flex.layout()
     }
 }

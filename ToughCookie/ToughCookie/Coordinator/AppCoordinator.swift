@@ -24,7 +24,6 @@ class AppCoordinator: AppCoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate? = nil
     
     required init(_ navigationController: UINavigationController) {
-        
         self.navigationController = navigationController
     }
 }
@@ -32,7 +31,6 @@ class AppCoordinator: AppCoordinatorProtocol {
 extension AppCoordinator {
     
     func start() {
-        
         self.showLaunchFlow()
     }
     
@@ -61,7 +59,6 @@ extension AppCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         
         childCoordinators = childCoordinators.filter {
-            
             $0.coordinatorType != childCoordinator.coordinatorType
         }
         
@@ -74,7 +71,6 @@ extension AppCoordinator: CoordinatorFinishDelegate {
             let data = launchCoordinator.marketAllData
             
             navigationController.viewControllers.removeAll()
-            
             showTabFlow(data)
             
         default: return

@@ -17,7 +17,6 @@ class MarketsHeaderView: UIView {
         super.init(frame: frame)
         
         let customWhite = UIColor.white.withAlphaComponent(0.6)
-        
         searchBar.searchTextField.backgroundColor = .clear
         searchBar.searchTextField.leftView?.tintColor = .white
         searchBar.searchTextField.textColor = .white
@@ -47,7 +46,6 @@ class MarketsHeaderView: UIView {
         super.layoutSubviews()
         
         searchBar.pin.all()
-
         self.flex.layout(mode: .adjustHeight)
     }
 }

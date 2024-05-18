@@ -14,13 +14,13 @@ class MarketsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        testLabel.textColor = .white
+        
         contentView.addSubview(testLabel)
         
         contentView.flex.direction(.column).define { flex in
             flex.addItem(testLabel).grow(1).padding(10)
         }
-        
-        testLabel.textColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -29,10 +29,12 @@ class MarketsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         layout()
     }
     
     fileprivate func layout() {
+        
         contentView.flex.layout(mode: .adjustHeight)
     }
     
@@ -40,7 +42,6 @@ class MarketsTableViewCell: UITableViewCell {
         
         contentView.pin.width(size.width)
         contentView.flex.layout(mode: .adjustHeight)
-        
         layout()
         
         return contentView.frame.size

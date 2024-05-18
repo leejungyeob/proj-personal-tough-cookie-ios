@@ -19,6 +19,11 @@
 		AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A6E2BF374040077635E /* BaseViewController.swift */; };
 		AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A702BF3749E0077635E /* BaseView.swift */; };
 		ACA39E2E2BF6303C006BC6E4 /* MarketsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */; };
+		ACA39E422BF85E49006BC6E4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E412BF85E49006BC6E4 /* Coordinator.swift */; };
+		ACA39E442BF85FCF006BC6E4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E432BF85FCF006BC6E4 /* AppCoordinator.swift */; };
+		ACA39E462BF8609F006BC6E4 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E452BF8609F006BC6E4 /* TabCoordinator.swift */; };
+		ACA39E492BF8617C006BC6E4 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E482BF8617C006BC6E4 /* TabBarItemType.swift */; };
+		ACA39E4C2BF8675A006BC6E4 /* MarketsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E4B2BF8675A006BC6E4 /* MarketsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		AC9B5A6E2BF374040077635E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AC9B5A702BF3749E0077635E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsHeaderView.swift; sourceTree = "<group>"; };
+		ACA39E412BF85E49006BC6E4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		ACA39E432BF85FCF006BC6E4 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		ACA39E452BF8609F006BC6E4 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
+		ACA39E482BF8617C006BC6E4 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
+		ACA39E4B2BF8675A006BC6E4 /* MarketsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 		AC5A7C9D2BF2184000A13991 /* ToughCookie */ = {
 			isa = PBXGroup;
 			children = (
+				ACA39E402BF85E3B006BC6E4 /* Coordinator */,
 				AC3248A32BF4E6F600BEC811 /* Present */,
 				AC9B5A672BF373C40077635E /* Base */,
 				AC5A7CB22BF218A100A13991 /* App */,
@@ -105,6 +116,34 @@
 				AC9B5A6E2BF374040077635E /* BaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		ACA39E402BF85E3B006BC6E4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E412BF85E49006BC6E4 /* Coordinator.swift */,
+				ACA39E432BF85FCF006BC6E4 /* AppCoordinator.swift */,
+				ACA39E472BF8616A006BC6E4 /* Tap */,
+				ACA39E4A2BF86745006BC6E4 /* Present */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		ACA39E472BF8616A006BC6E4 /* Tap */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E452BF8609F006BC6E4 /* TabCoordinator.swift */,
+				ACA39E482BF8617C006BC6E4 /* TabBarItemType.swift */,
+			);
+			path = Tap;
+			sourceTree = "<group>";
+		};
+		ACA39E4A2BF86745006BC6E4 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E4B2BF8675A006BC6E4 /* MarketsCoordinator.swift */,
+			);
+			path = Present;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,12 +226,17 @@
 			files = (
 				AC3248A72BF4E7AB00BEC811 /* MarketsView.swift in Sources */,
 				AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */,
+				ACA39E4C2BF8675A006BC6E4 /* MarketsCoordinator.swift in Sources */,
+				ACA39E492BF8617C006BC6E4 /* TabBarItemType.swift in Sources */,
+				ACA39E462BF8609F006BC6E4 /* TabCoordinator.swift in Sources */,
+				ACA39E442BF85FCF006BC6E4 /* AppCoordinator.swift in Sources */,
 				AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */,
 				AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */,
 				AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */,
 				ACA39E2E2BF6303C006BC6E4 /* MarketsHeaderView.swift in Sources */,
 				AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */,
 				AC3248A92BF5103400BEC811 /* MarketsTableViewCell.swift in Sources */,
+				ACA39E422BF85E49006BC6E4 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

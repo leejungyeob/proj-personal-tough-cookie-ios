@@ -1,0 +1,64 @@
+//
+//  AppCoordinator.swift
+//  ToughCookie
+//
+//  Created by 이중엽 on 5/18/24.
+//
+
+import UIKit
+
+protocol AppCoordinatorProtocol: Coordinator {
+    
+    func showTabFlow()
+}
+
+class AppCoordinator: AppCoordinatorProtocol {
+    
+    var coordinatorType: CoordinatorType { .app }
+    
+    var navigationController: UINavigationController
+    
+    var childCoordinators: [Coordinator] = []
+    
+    var finishDelegate: CoordinatorFinishDelegate? = nil
+    
+    required init(_ navigationController: UINavigationController) {
+        
+        self.navigationController = navigationController
+    }
+}
+
+extension AppCoordinator {
+    
+    func start() {
+        
+        self.showTabFlow()
+    }
+    
+    func showTabFlow() {
+        
+        let tabBarCoordinator = TabCoordinator(navigationController)
+        tabBarCoordinator.finishDelegate = self
+        tabBarCoordinator.start()
+        
+        childCoordinators.append(tabBarCoordinator)
+    }
+}
+
+extension AppCoordinator: CoordinatorFinishDelegate {
+    
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        
+        childCoordinators = childCoordinators.filter {
+            
+            $0.coordinatorType != childCoordinator.coordinatorType
+        }
+        
+        switch childCoordinator.coordinatorType {
+            
+        case .tab:
+            print("Tab Bar Controller 종료")
+        default: return
+        }
+    }
+}

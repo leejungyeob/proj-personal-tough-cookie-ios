@@ -36,6 +36,16 @@ class MarketsViewController: BaseViewController<MarketsView> {
         header.backgroundColor = .clear
         
         layoutView.tableView.tableHeaderView = header
+        
+        SceneDelegate.detectedEnterForeground = {
+            self.layoutView.tableView.reloadData()
+        }
+    }
+    
+    override func bind() {
+        
+        let input = MarketsViewModel.Input()
+        let output = viewModel.transform(input)
     }
 }
 
@@ -52,6 +62,7 @@ extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.testLabel.text = "\(total[indexPath.row])"
         cell.backgroundColor = .clear
+        cell.tag = indexPath.row
         
         return cell
     }

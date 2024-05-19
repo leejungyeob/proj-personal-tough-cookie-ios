@@ -29,7 +29,7 @@ class BaseView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        flexView.pin.all()
+        flexView.pin.all(self.pin.safeArea)
         flexView.flex.layout()
     }
     

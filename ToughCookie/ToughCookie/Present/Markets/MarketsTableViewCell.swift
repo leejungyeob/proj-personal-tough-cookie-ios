@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FlexLayout
+import PinLayout
 
 class MarketsTableViewCell: UITableViewCell {
     
@@ -27,23 +29,16 @@ class MarketsTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        testLabel.text = ""
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layout()
-    }
-    
-    fileprivate func layout() {
-        
+        contentView.pin.all(contentView.pin.safeArea)
         contentView.flex.layout(mode: .adjustHeight)
-    }
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        
-        contentView.pin.width(size.width)
-        contentView.flex.layout(mode: .adjustHeight)
-        layout()
-        
-        return contentView.frame.size
     }
 }

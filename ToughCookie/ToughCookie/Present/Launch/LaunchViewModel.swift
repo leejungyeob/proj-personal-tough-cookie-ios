@@ -17,7 +17,7 @@ final class LaunchViewModel: ViewModelProtocol {
     
     struct Input {
         
-        let fetchMarketAll = PublishRelay<Void>()
+        let marketData = PublishRelay<Void>()
     }
     
     struct Output {
@@ -31,8 +31,8 @@ final class LaunchViewModel: ViewModelProtocol {
         let fetchFailure = PublishRelay<UpbitAPIError>()
         
         // Fetch Market All Datas - 업비트에서 거래 가능한 마켓 목록
-        input.fetchMarketAll.flatMap { _ in
-            return APIManager.callAPI(router: UpbitRouter.fetchMarketAll, dataModel: [FetchMarketAllData].self)
+        input.marketData.flatMap { _ in
+            return APIManager.callAPI(router: UpbitRouter.marketData, dataModel: [MarketData].self)
         }.subscribe(with: self) { owner, result in
             
             switch result {

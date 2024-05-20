@@ -38,6 +38,6 @@ class LaunchViewController: BaseViewController<LaunchView> {
             
         }.disposed(by: disposeBag)
         
-        input.fetchMarketAll.accept(())
+        input.marketData.accept(())
     }
 }

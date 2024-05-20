@@ -1,5 +1,5 @@
 //
-//  FetchMarketAllData.swift
+//  MarketData.swift
 //  ToughCookie
 //
 //  Created by 이중엽 on 5/18/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FetchMarketAllData: Decodable {
+struct MarketData: Decodable, Hashable {
     
     let market: String
     let koreanName: String

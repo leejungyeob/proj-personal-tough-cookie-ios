@@ -9,7 +9,7 @@ import UIKit
 
 protocol LaunchCoordinatorProtocol: Coordinator {
     
-    var marketAllData: [FetchMarketAllData] { get set }
+    var marketAllData: [MarketData] { get set }
     
     func showLaunchView()
 }
@@ -24,7 +24,7 @@ final class LaunchCoordinator: LaunchCoordinatorProtocol {
     
     var finishDelegate: CoordinatorFinishDelegate?
     
-    var marketAllData: [FetchMarketAllData] = [] {
+    var marketAllData: [MarketData] = [] {
         didSet { finish() }
     }
     

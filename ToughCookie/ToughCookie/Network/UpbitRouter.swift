@@ -10,7 +10,7 @@ import Alamofire
 
 enum UpbitRouter: RouterProtocol {
     
-    case fetchMarketAll
+    case marketData
 }
 
 extension UpbitRouter {
@@ -23,7 +23,7 @@ extension UpbitRouter {
     var method: Alamofire.HTTPMethod {
         
         switch self {
-        case .fetchMarketAll:
+        case .marketData:
             return .get
         }
     }
@@ -31,7 +31,7 @@ extension UpbitRouter {
     var path: String {
         
         switch self {
-        case .fetchMarketAll:
+        case .marketData:
             return "/market/all"
         }
     }

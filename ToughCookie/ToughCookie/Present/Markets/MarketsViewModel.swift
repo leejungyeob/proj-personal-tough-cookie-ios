@@ -14,9 +14,11 @@ final class MarketsViewModel: ViewModelProtocol {
     var disposeBag = DisposeBag()
     
     var coordinator: Coordinator?
-    var marketAllData: [FetchMarketAllData]
+    var marketAllData: [MarketData]
     
-    init(coordinator: Coordinator, data marketAllData: [FetchMarketAllData]) {
+    let repository: [MarketData: TickerData] = [:]
+    
+    init(coordinator: Coordinator, data marketAllData: [MarketData]) {
         self.coordinator = coordinator
         self.marketAllData = marketAllData
     }
@@ -52,7 +54,7 @@ final class MarketsViewModel: ViewModelProtocol {
             // 데이터 수신
             case .binary(let data):
                 
-                guard let json = try? JSONDecoder().decode(CoinTicker.self, from: data) else { return }
+                guard let json = try? JSONDecoder().decode(TickerData.self, from: data) else { return }
                 
                 
                 

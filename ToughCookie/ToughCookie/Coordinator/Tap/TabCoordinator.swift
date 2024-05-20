@@ -11,7 +11,7 @@ protocol TabCoordinatorProtocol: Coordinator {
     
     var tabBarController: UITabBarController { get set }
     
-    var marketAllData: [FetchMarketAllData] { get set }
+    var marketAllData: [MarketData] { get set }
 }
 
 final class TabCoordinator: TabCoordinatorProtocol {
@@ -26,7 +26,7 @@ final class TabCoordinator: TabCoordinatorProtocol {
     
     var finishDelegate: CoordinatorFinishDelegate?
     
-    var marketAllData: [FetchMarketAllData] = []
+    var marketAllData: [MarketData] = []
     
     required init(_ navigationController: UINavigationController) {
         

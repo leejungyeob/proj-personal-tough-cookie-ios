@@ -9,7 +9,7 @@ import UIKit
 
 protocol MarketsCoordinatorProtocol: Coordinator {
     
-    var marketAllData: [FetchMarketAllData] { get set }
+    var marketAllData: [MarketData] { get set }
     
     func showMarketsTabView()
 }
@@ -24,7 +24,7 @@ class MarketsCoordinator: MarketsCoordinatorProtocol {
     
     var finishDelegate: CoordinatorFinishDelegate?
     
-    var marketAllData: [FetchMarketAllData] = []
+    var marketAllData: [MarketData] = []
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController

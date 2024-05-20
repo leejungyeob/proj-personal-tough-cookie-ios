@@ -9,8 +9,6 @@ import UIKit
 
 protocol MarketsCoordinatorProtocol: Coordinator {
     
-    var marketAllData: [MarketData] { get set }
-    
     func showMarketsTabView()
 }
 
@@ -23,8 +21,6 @@ class MarketsCoordinator: MarketsCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     
     var finishDelegate: CoordinatorFinishDelegate?
-    
-    var marketAllData: [MarketData] = []
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -43,11 +39,8 @@ extension MarketsCoordinator {
     
     func showMarketsTabView() {
         
-        guard !marketAllData.isEmpty else { return }
-        
-        let marketsViewModel = MarketsViewModel(coordinator: self, data: marketAllData)
+        let marketsViewModel = MarketsViewModel(coordinator: self)
         let marketsViewController = MarketsViewController(viewModel: marketsViewModel)
-        marketsViewModel.coordinator = self
         
         self.navigationController.pushViewController(marketsViewController, animated: false)
         

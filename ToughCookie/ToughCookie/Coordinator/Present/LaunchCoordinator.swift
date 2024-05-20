@@ -9,8 +9,6 @@ import UIKit
 
 protocol LaunchCoordinatorProtocol: Coordinator {
     
-    var marketAllData: [MarketData] { get set }
-    
     func showLaunchView()
 }
 
@@ -24,12 +22,7 @@ final class LaunchCoordinator: LaunchCoordinatorProtocol {
     
     var finishDelegate: CoordinatorFinishDelegate?
     
-    var marketAllData: [MarketData] = [] {
-        didSet { finish() }
-    }
-    
     required init(_ navigationController: UINavigationController) {
-        
         self.navigationController = navigationController
     }
     

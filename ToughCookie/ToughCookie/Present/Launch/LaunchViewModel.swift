@@ -37,7 +37,9 @@ final class LaunchViewModel: ViewModelProtocol {
             
             switch result {
             case .success(let data):
-                owner.coordinator?.marketAllData = data
+                
+                CoinRepository.shared.marketData = data
+                owner.coordinator?.finish()
                 
             case .failure(let error):
                 fetchFailure.accept(error)

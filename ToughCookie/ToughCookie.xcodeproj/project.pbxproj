@@ -41,6 +41,7 @@
 		ACA39E7E2BFA6024006BC6E4 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = ACA39E7D2BFA6024006BC6E4 /* Starscream */; };
 		ACA39E802BFA603B006BC6E4 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E7F2BFA603B006BC6E4 /* WebSocketManager.swift */; };
 		ACA39E832BFB9EF9006BC6E4 /* TickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E822BFB9EF9006BC6E4 /* TickerData.swift */; };
+		ACA39E852BFBA371006BC6E4 /* CoinRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E842BFBA371006BC6E4 /* CoinRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		ACA39E712BF91202006BC6E4 /* MarketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewModel.swift; sourceTree = "<group>"; };
 		ACA39E7F2BFA603B006BC6E4 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		ACA39E822BFB9EF9006BC6E4 /* TickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerData.swift; sourceTree = "<group>"; };
+		ACA39E842BFBA371006BC6E4 /* CoinRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 		ACA39E812BFB9D9A006BC6E4 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				ACA39E842BFBA371006BC6E4 /* CoinRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				AC5A7CA12BF2184000A13991 /* SceneDelegate.swift in Sources */,
 				ACA39E6E2BF8CD74006BC6E4 /* ViewModelProtocol.swift in Sources */,
 				ACA39E722BF91202006BC6E4 /* MarketsViewModel.swift in Sources */,
+				ACA39E852BFBA371006BC6E4 /* CoinRepository.swift in Sources */,
 				AC3248A92BF5103400BEC811 /* MarketsTableViewCell.swift in Sources */,
 				ACA39E642BF89E50006BC6E4 /* UpbitAPIError.swift in Sources */,
 				ACA39E422BF85E49006BC6E4 /* Coordinator.swift in Sources */,

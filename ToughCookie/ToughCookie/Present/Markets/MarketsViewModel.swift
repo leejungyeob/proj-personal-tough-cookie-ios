@@ -14,18 +14,17 @@ final class MarketsViewModel: ViewModelProtocol {
     var disposeBag = DisposeBag()
     
     var coordinator: Coordinator?
-    var marketAllData: [MarketData]
     
-    let repository: [MarketData: TickerData] = [:]
+    var repository: CoinRepository = CoinRepository.shared
     
-    init(coordinator: Coordinator, data marketAllData: [MarketData]) {
+    let tickerDataRelay = PublishRelay<[TickerData]>()
+    
+    init(coordinator: Coordinator) {
         self.coordinator = coordinator
-        self.marketAllData = marketAllData
     }
     
     struct Input {
         
-        let sendData = PublishRelay<Void>()
     }
     
     struct Output {
@@ -34,29 +33,39 @@ final class MarketsViewModel: ViewModelProtocol {
     
     func transform(_ input: Input) -> Output {
         
+        
+        
         return Output()
     }
     
     func connect() {
         
-        let codes = marketAllData.map { return $0.market }
+        let codes = repository.marketData.map { return $0.market }
         let socket = WebSocketManager.shared.connect() // 웹소켓 연결
         
         socket.onEvent = { [weak self] event in
             
-            switch event {
-            // 데이터 요청
-            case .connected(_):
+            guard let self else { return }
             
+            switch event {
+                // 데이터 요청
+            case .connected(_):
+                
                 WebSocketManager.shared.send("""
                       [{"ticket":"test"},{"type":"ticker","codes": \(codes)}]
                     """)
-            // 데이터 수신
+                // 데이터 수신
             case .binary(let data):
                 
-                guard let json = try? JSONDecoder().decode(TickerData.self, from: data) else { return }
+                guard let tickerData: TickerData = try? JSONDecoder().decode(TickerData.self, from: data) else { return }
                 
+                // Ticker Data 저장(업데이트)
+                repository.updateTickerDict(tickerData)
                 
+                // 정렬된 Ticker Data 전달
+                let sortedTickerData = repository.sortedTickerList()
+                
+                self.tickerDataRelay.accept(sortedTickerData)
                 
             default: return
             }

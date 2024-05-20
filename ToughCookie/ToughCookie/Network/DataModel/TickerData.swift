@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TickerData: Decodable {
+struct TickerData: Decodable, Hashable {
   let type: String // ticker : 현재가
   let code: String
   let openingPrice: Double

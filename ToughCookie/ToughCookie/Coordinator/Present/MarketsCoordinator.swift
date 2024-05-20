@@ -47,6 +47,7 @@ extension MarketsCoordinator {
         
         let marketsViewModel = MarketsViewModel(coordinator: self, data: marketAllData)
         let marketsViewController = MarketsViewController(viewModel: marketsViewModel)
+        marketsViewModel.coordinator = self
         
         self.navigationController.pushViewController(marketsViewController, animated: false)
         

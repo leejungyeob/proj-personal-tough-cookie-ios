@@ -14,7 +14,6 @@ final class MarketsViewModel: ViewModelProtocol {
     var disposeBag = DisposeBag()
     
     var coordinator: Coordinator?
-    
     var marketAllData: [FetchMarketAllData]
     
     init(coordinator: Coordinator, data marketAllData: [FetchMarketAllData]) {
@@ -24,6 +23,7 @@ final class MarketsViewModel: ViewModelProtocol {
     
     struct Input {
         
+        let sendData = PublishRelay<Void>()
     }
     
     struct Output {
@@ -33,5 +33,31 @@ final class MarketsViewModel: ViewModelProtocol {
     func transform(_ input: Input) -> Output {
         
         return Output()
+    }
+    
+    func connect() {
+        
+        let codes = marketAllData.map { return $0.market }
+        let socket = WebSocketManager.shared.connect() // 웹소켓 연결
+        
+        socket.onEvent = { [weak self] event in
+            
+            switch event {
+            // 데이터 요청
+            case .connected(_):
+            
+                WebSocketManager.shared.send("""
+                      [{"ticket":"test"},{"type":"ticker","codes": \(codes)}]
+                    """)
+            // 데이터 수신
+            case .binary(let data):
+                
+                guard let json = try? JSONDecoder().decode(CoinTicker.self, from: data) else { return }
+                
+                
+                
+            default: return
+            }
+        }
     }
 }

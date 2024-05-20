@@ -26,6 +26,12 @@ class MarketsViewController: BaseViewController<MarketsView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
+    
     override func configureView() {
         
         layoutView.tableView.dataSource = self
@@ -37,12 +43,19 @@ class MarketsViewController: BaseViewController<MarketsView> {
         
         layoutView.tableView.tableHeaderView = header
         
-        SceneDelegate.detectedEnterForeground = {
+        // background -> foreground : tableViewCell 다시 그리기 및 소켓 재연결
+        SceneDelegate.detectedEnterForeground = { [weak self] in
+            
+            guard let self else { return }
+            
             self.layoutView.tableView.reloadData()
+            self.viewModel.connect()
         }
     }
     
     override func bind() {
+        
+        viewModel.connect()
         
         let input = MarketsViewModel.Input()
         let output = viewModel.transform(input)

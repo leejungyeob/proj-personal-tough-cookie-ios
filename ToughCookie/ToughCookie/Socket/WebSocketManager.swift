@@ -21,12 +21,14 @@ class WebSocketManager {
         
         websocket = WebSocket(request: request)
         websocket.delegate = self
+        websocket.callbackQueue = DispatchQueue(label: "custom", qos: .utility)
     }
 }
 
 extension WebSocketManager {
     
     func connect() -> WebSocket {
+        print(Thread.isMainThread)
         websocket.connect()
         return websocket
     }

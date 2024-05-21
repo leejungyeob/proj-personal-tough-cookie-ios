@@ -59,11 +59,12 @@ final class MarketsViewModel: ViewModelProtocol {
                 guard let tickerData: TickerData = try? JSONDecoder().decode(TickerData.self, from: data) else { return }
                 
                 // Ticker Data 저장(업데이트)
-                repository.updateTickerDict(tickerData)
+                self.repository.updateTickerDict(tickerData)
                 // 정렬된 Ticker Data 생성
-                let sortedTickerData = repository.sortedTickerList()
+                let sortedTickerData = self.repository.sortedTickerList()
                 // Ticker Section 생성 및 전달
                 let customSection = [TickerSection(items: sortedTickerData)]
+                
                 self.customSectionRelay.accept(customSection)
                 
             default: return

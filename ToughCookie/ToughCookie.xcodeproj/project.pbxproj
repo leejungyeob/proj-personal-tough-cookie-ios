@@ -46,6 +46,7 @@
 		ACA39E8A2BFC2AE0006BC6E4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = ACA39E892BFC2AE0006BC6E4 /* RxDataSources */; };
 		ACA39E8F2BFC703A006BC6E4 /* TickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E8E2BFC703A006BC6E4 /* TickerSection.swift */; };
 		ACA39E912BFC8B4D006BC6E4 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E902BFC8B4D006BC6E4 /* BaseTableViewCell.swift */; };
+		ACA39E942BFC9286006BC6E4 /* NumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E932BFC9286006BC6E4 /* NumberUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		ACA39E842BFBA371006BC6E4 /* CoinRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRepository.swift; sourceTree = "<group>"; };
 		ACA39E8E2BFC703A006BC6E4 /* TickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerSection.swift; sourceTree = "<group>"; };
 		ACA39E902BFC8B4D006BC6E4 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		ACA39E932BFC9286006BC6E4 /* NumberUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		AC5A7C9D2BF2184000A13991 /* ToughCookie */ = {
 			isa = PBXGroup;
 			children = (
+				ACA39E922BFC9259006BC6E4 /* Util */,
 				ACA39E8D2BFC700C006BC6E4 /* DataSourceSection */,
 				ACA39E812BFB9D9A006BC6E4 /* Repository */,
 				ACA39E762BFA0C99006BC6E4 /* Socket */,
@@ -286,6 +289,14 @@
 			path = DataSourceSection;
 			sourceTree = "<group>";
 		};
+		ACA39E922BFC9259006BC6E4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E932BFC9286006BC6E4 /* NumberUtil.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -388,6 +399,7 @@
 				ACA39E682BF8B812006BC6E4 /* LaunchView.swift in Sources */,
 				ACA39E802BFA603B006BC6E4 /* WebSocketManager.swift in Sources */,
 				ACA39E702BF8CE87006BC6E4 /* LaunchViewModel.swift in Sources */,
+				ACA39E942BFC9286006BC6E4 /* NumberUtil.swift in Sources */,
 				ACA39E612BF89825006BC6E4 /* MarketData.swift in Sources */,
 				ACA39E592BF891D7006BC6E4 /* RouterProtocol.swift in Sources */,
 				ACA39E5C2BF8926D006BC6E4 /* UpbitRouter.swift in Sources */,

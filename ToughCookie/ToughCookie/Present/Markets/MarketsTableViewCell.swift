@@ -79,7 +79,7 @@ class MarketsTableViewCell: BaseTableViewCell {
     
     override func configureLayout() {
         
-        contentView.flex.direction(.row).justifyContent(.start).paddingHorizontal(2.5%).height(UITableView.automaticDimension).define { flex in
+        contentView.flex.direction(.row).justifyContent(.spaceBetween).paddingHorizontal(2.5%).height(UITableView.automaticDimension).define { flex in
             
             flex.addItem()
                 .direction(.column)
@@ -132,22 +132,36 @@ extension MarketsTableViewCell {
     func configureView(_ tickerData: TickerData) {
         
         let marketData = CoinRepository.shared.getMarketDatumByTicker(tickerData)
+        let sign = CoinSign(rawValue: tickerData.change) ?? .even
         
         koreanNameLabel.text = marketData.koreanName
-        codeNameLabel.text = tickerData.code
+        koreanNameLabel.adjustsFontSizeToFitWidth = true
+        koreanNameLabel.flex.markDirty()
         
-        tradePriceLabel.text = "\(tickerData.tradePrice)"
+        codeNameLabel.text = tickerData.code
+        codeNameLabel.adjustsFontSizeToFitWidth = true
+        codeNameLabel.flex.markDirty()
+        
+        let tradePrice = NumberUtil.changeDoubleToDecimalStr(tickerData.tradePrice)
+        tradePriceLabel.text = tradePrice
+        tradePriceLabel.textColor = sign.color
+        tradePriceLabel.adjustsFontSizeToFitWidth = true
         tradePriceLabel.flex.markDirty()
         
-        changeRateLabel.text = "\(tickerData.changeRate)"
+        let changeRate = NumberUtil.changeDecimalToPercentage(tickerData.changeRate)
+        changeRateLabel.text = "\(sign.sign)\(changeRate)%"
+        changeRateLabel.textColor = sign.color
         changeRateLabel.adjustsFontSizeToFitWidth = true
         changeRateLabel.flex.markDirty()
         
-        changePriceLabel.text = "\(tickerData.changePrice)"
+        let changePrice = NumberUtil.changeDoubleToDecimalStr(tickerData.changePrice)
+        changePriceLabel.text = "\(sign.sign)\(changePrice)"
+        changePriceLabel.textColor = sign.color
         changePriceLabel.adjustsFontSizeToFitWidth = true
         changePriceLabel.flex.markDirty()
         
-        accTradePrice24Label.text = "\(tickerData.accTradePrice24H)"
+        let accTradePrice24H = NumberUtil.changeDoubleToOneMillionStr(tickerData.accTradePrice24H)
+        accTradePrice24Label.text = "\(accTradePrice24H)"
         accTradePrice24Label.adjustsFontSizeToFitWidth = true
         accTradePrice24Label.flex.markDirty()
     }

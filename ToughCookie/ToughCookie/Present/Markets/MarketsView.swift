@@ -21,6 +21,8 @@ class MarketsView: BaseView {
         addSubview(tableView)
         
         flexView.flex.define { flex in
+            
+            flex.addItem().height(10)
             flex.addItem(tableView).grow(1)
         }
     }

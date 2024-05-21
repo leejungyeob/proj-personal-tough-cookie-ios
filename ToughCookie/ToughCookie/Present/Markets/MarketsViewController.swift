@@ -62,7 +62,6 @@ class MarketsViewController: BaseViewController<MarketsView> {
             
             cell.configureView(item)
             
-            
             cell.layoutSubviews()
             
             return cell

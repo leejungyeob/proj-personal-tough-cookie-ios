@@ -14,6 +14,9 @@ class MarketsView: BaseView {
     override func configureView() {
         
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .white
+        tableView.separatorInset = .zero
         
         addSubview(tableView)
         

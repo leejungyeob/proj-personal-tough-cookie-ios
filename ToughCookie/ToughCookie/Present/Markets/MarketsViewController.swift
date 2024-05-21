@@ -8,13 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class MarketsViewController: BaseViewController<MarketsView> {
     
     var viewModel: MarketsViewModel
     
-    var total: [Int] = [1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
-    var a = 3
+    private var dataSource: RxTableViewSectionedReloadDataSource<TickerSection>!
     
     init(viewModel: MarketsViewModel) {
         self.viewModel = viewModel
@@ -29,12 +29,10 @@ class MarketsViewController: BaseViewController<MarketsView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     override func configureView() {
         
-        layoutView.tableView.dataSource = self
         layoutView.tableView.delegate = self
         layoutView.tableView.register(MarketsTableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -42,6 +40,8 @@ class MarketsViewController: BaseViewController<MarketsView> {
         header.backgroundColor = .clear
         
         layoutView.tableView.tableHeaderView = header
+        
+        // NotificationCenter.default.addObserver(self, selector: #selector(applicationBecome), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         // background -> foreground : tableViewCell 다시 그리기 및 소켓 재연결
         SceneDelegate.detectedEnterForeground = { [weak self] in
@@ -53,34 +53,41 @@ class MarketsViewController: BaseViewController<MarketsView> {
         }
     }
     
+    override func configureTableView() {
+        
+        // RxDataSource cell 구성
+        dataSource = RxTableViewSectionedReloadDataSource<TickerSection> { data, tableView, indexPath, item in
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MarketsTableViewCell else { return UITableViewCell() }
+            
+            cell.configureView(item)
+            
+            
+            cell.layoutSubviews()
+            
+            return cell
+        }
+    }
+    
     override func bind() {
         
         viewModel.connect()
         
         let input = MarketsViewModel.Input()
         let output = viewModel.transform(input)
+        
+        // RxDataSource 연결
+        output.customSectionDrive
+            .drive(layoutView.tableView.rx.items(dataSource: self.dataSource))
+            .disposed(by: disposeBag)
     }
 }
 
 
-extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return total.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MarketsTableViewCell else { return UITableViewCell() }
-        
-        cell.testLabel.text = "\(total[indexPath.row])"
-        cell.backgroundColor = .clear
-        cell.tag = indexPath.row
-        
-        return cell
-    }
+extension MarketsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return UITableView.automaticDimension
     }
 }

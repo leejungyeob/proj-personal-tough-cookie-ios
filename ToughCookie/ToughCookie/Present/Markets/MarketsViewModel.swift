@@ -11,31 +11,28 @@ import RxCocoa
 
 final class MarketsViewModel: ViewModelProtocol {
     
-    var disposeBag = DisposeBag()
-    
     var coordinator: Coordinator?
-    
     var repository: CoinRepository = CoinRepository.shared
+    let customSectionRelay = PublishRelay<[TickerSection]>()
     
-    let tickerDataRelay = PublishRelay<[TickerData]>()
+    var disposeBag = DisposeBag()
     
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
     
-    struct Input {
-        
-    }
+    struct Input { }
     
     struct Output {
         
+        let customSectionDrive: Driver<[TickerSection]>
     }
     
     func transform(_ input: Input) -> Output {
         
+        let customSectionDrive = customSectionRelay.asDriver(onErrorJustReturn: [])
         
-        
-        return Output()
+        return Output(customSectionDrive: customSectionDrive)
     }
     
     func connect() {
@@ -48,12 +45,14 @@ final class MarketsViewModel: ViewModelProtocol {
             guard let self else { return }
             
             switch event {
+                
                 // 데이터 요청
             case .connected(_):
                 
                 WebSocketManager.shared.send("""
                       [{"ticket":"test"},{"type":"ticker","codes": \(codes)}]
                     """)
+                
                 // 데이터 수신
             case .binary(let data):
                 
@@ -61,11 +60,11 @@ final class MarketsViewModel: ViewModelProtocol {
                 
                 // Ticker Data 저장(업데이트)
                 repository.updateTickerDict(tickerData)
-                
-                // 정렬된 Ticker Data 전달
+                // 정렬된 Ticker Data 생성
                 let sortedTickerData = repository.sortedTickerList()
-                
-                self.tickerDataRelay.accept(sortedTickerData)
+                // Ticker Section 생성 및 전달
+                let customSection = [TickerSection(items: sortedTickerData)]
+                self.customSectionRelay.accept(customSection)
                 
             default: return
             }

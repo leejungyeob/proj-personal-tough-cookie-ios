@@ -27,24 +27,6 @@ class CoinRepository {
         return tickerDict.values.sorted { $0.accTradePrice24H > $1.accTradePrice24H }.compactMap { $0 }
     }
     
-    // func sortedMarketData() -> [MarketData] {
-    //     
-    //     var sortedMarketData: [MarketData] = []
-    //     let sortedTickerData = sortedTickerList()
-    //     
-    //     sortedTickerData.forEach { tickerData in
-    //         
-    //         self.marketData.forEach { marketData in
-    //             
-    //             if marketData.market == tickerData.code {
-    //                 sortedMarketData.append(marketData)
-    //             }
-    //         }
-    //     }
-    //     
-    //     return sortedMarketData
-    // }
-    
     func getMarketDatumByTicker(_ data: TickerData) -> MarketData {
         
         guard let marketDatum = self.marketData.filter({ $0.market == data.code }).first else { return MarketData(market: "", koreanName: "", englishName: "")}

@@ -13,7 +13,7 @@ final class MarketsViewModel: ViewModelProtocol {
     
     var coordinator: Coordinator?
     var repository: CoinRepository = CoinRepository.shared
-    let customSectionRelay = PublishRelay<[TickerSection]>()
+    let sortedTickerData = PublishRelay<[TickerData]>()
     
     var disposeBag = DisposeBag()
     
@@ -25,16 +25,16 @@ final class MarketsViewModel: ViewModelProtocol {
     
     struct Output {
         
-        let customSectionDrive: Driver<[TickerSection]>
+        let sortedTickerDataDriver: Driver<[TickerData]>
     }
     
     func transform(_ input: Input) -> Output {
         
-        let customSectionDrive = customSectionRelay
+        let sortedTickerDataDriver = sortedTickerData
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
-            .asDriver(onErrorJustReturn: [])
+            .asDriver(onErrorJustReturn: [TickerData.dummyData()])
         
-        return Output(customSectionDrive: customSectionDrive)
+        return Output(sortedTickerDataDriver: sortedTickerDataDriver)
     }
     
     func connect() {
@@ -62,12 +62,11 @@ final class MarketsViewModel: ViewModelProtocol {
                 
                 // Ticker Data 저장(업데이트)
                 self.repository.updateTickerDict(tickerData)
+                
                 // 정렬된 Ticker Data 생성
                 let sortedTickerData = self.repository.sortedTickerList()
-                // Ticker Section 생성 및 전달
-                let customSection = [TickerSection(items: sortedTickerData)]
                 
-                self.customSectionRelay.accept(customSection)
+                self.sortedTickerData.accept(sortedTickerData)
                 
             default: return
             }

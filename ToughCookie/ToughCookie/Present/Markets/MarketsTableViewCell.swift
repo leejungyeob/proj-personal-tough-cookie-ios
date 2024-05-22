@@ -165,4 +165,14 @@ extension MarketsTableViewCell {
         accTradePrice24Label.adjustsFontSizeToFitWidth = true
         accTradePrice24Label.flex.markDirty()
     }
+    
+    func test(_ tickerData: TickerData) {
+        tradePriceLabel.layer.borderWidth = 0.3
+        tradePriceLabel.layer.cornerRadius = 5
+        tradePriceLabel.layer.borderColor = UIColor.systemRed.cgColor
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            self.tradePriceLabel.layer.borderWidth = 0
+        }
+    }
 }

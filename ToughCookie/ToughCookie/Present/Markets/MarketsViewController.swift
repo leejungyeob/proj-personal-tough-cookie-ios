@@ -10,11 +10,15 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
+enum TickerMySection {
+    case main
+}
+
 class MarketsViewController: BaseViewController<MarketsView> {
     
     var viewModel: MarketsViewModel
     
-    private var dataSource: RxTableViewSectionedReloadDataSource<TickerSection>!
+    private var dataSource: UITableViewDiffableDataSource<TickerMySection, TickerData>!
     
     init(viewModel: MarketsViewModel) {
         self.viewModel = viewModel
@@ -55,17 +59,20 @@ class MarketsViewController: BaseViewController<MarketsView> {
     
     override func configureTableView() {
         
-        // RxDataSource cell 구성
-        dataSource = RxTableViewSectionedReloadDataSource<TickerSection> { data, tableView, indexPath, item in
+        self.dataSource = UITableViewDiffableDataSource(tableView: layoutView.tableView, cellProvider: { tableView, indexPath, itemIdentifier in
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MarketsTableViewCell else { return UITableViewCell() }
+            guard let cell: MarketsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MarketsTableViewCell else { return UITableViewCell() }
             
-            cell.configureView(item)
+            cell.configureView(itemIdentifier)
             
             cell.layoutSubviews()
             
+            cell.test(itemIdentifier)
+            
             return cell
-        }
+        })
+        
+        self.dataSource.defaultRowAnimation = .none
     }
     
     override func bind() {
@@ -76,9 +83,18 @@ class MarketsViewController: BaseViewController<MarketsView> {
         let output = viewModel.transform(input)
         
         // RxDataSource 연결
-        output.customSectionDrive
-            .drive(layoutView.tableView.rx.items(dataSource: self.dataSource))
-            .disposed(by: disposeBag)
+        output.sortedTickerDataDriver
+            .drive(with: self) { owner, data in
+                
+                var snapshot = NSDiffableDataSourceSnapshot<TickerMySection, TickerData>()
+                
+                snapshot.appendSections([TickerMySection.main])
+                
+                snapshot.appendItems(data, toSection: .main)
+                
+                self.dataSource.apply(snapshot)
+                
+            }.disposed(by: disposeBag)
     }
 }
 

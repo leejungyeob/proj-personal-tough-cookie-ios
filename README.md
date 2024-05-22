@@ -30,8 +30,11 @@ tableview를 스크롤해보니 cell이 prepareToReuse가 될 때 다시 뷰가 
 
 시도
 1. 스크롤 시 데이터 업데이트 중단
+    -> X
 2. debounce로 받아오는 이벤트 횟수 줄이기
+ -> debounce보다는 throttle이 더 적절한것같아서 변경
 3. main thread에서 동작하는 걸 global thread로 변경해서 mainthread의 부담 줄이기
+4. rxdatasource -> diffable (snapshot 방식으로 변경된 데이터만 ui 업데이트)
 
 <img src = "https://github.com/DONOTINTO/DoT/assets/123792519/b0be60ac-d869-4f86-9140-0f4a8c8eef72">
 
@@ -39,3 +42,11 @@ tableview를 스크롤해보니 cell이 prepareToReuse가 될 때 다시 뷰가 
 
 메인스레드 부담 97.4 -> 92.7 약 4.7%p 줄임
 하지만 아직도 스크롤 시 버벅임 발생
+
+-> 스크롤 버벅임은 사라졌지만 ui가 업데이트되면서 글자가 겹치는 현상 발생
+-> 너무 빈번한 ui업데이트가 문제인가 싶엇음
+    -> throttle로 업데이트 속도 늦춰봄 -> 해결안됨
+    -> 서버에서 decoding 하는 데이터 수를 줄여서 최대한 변경사항을 줄여서 snapshot으로 변경사항 줄이기 -> 해결안됨
+
+-> diffable update animation이 문제였음
+-> 스크롤 시 한번씩 터치가 씹히는 현상도 개선됨

@@ -30,7 +30,9 @@ final class MarketsViewModel: ViewModelProtocol {
     
     func transform(_ input: Input) -> Output {
         
-        let customSectionDrive = customSectionRelay.asDriver(onErrorJustReturn: [])
+        let customSectionDrive = customSectionRelay
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .asDriver(onErrorJustReturn: [])
         
         return Output(customSectionDrive: customSectionDrive)
     }

@@ -47,6 +47,7 @@
 		ACA39E8F2BFC703A006BC6E4 /* TickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E8E2BFC703A006BC6E4 /* TickerSection.swift */; };
 		ACA39E912BFC8B4D006BC6E4 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E902BFC8B4D006BC6E4 /* BaseTableViewCell.swift */; };
 		ACA39E942BFC9286006BC6E4 /* NumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA39E932BFC9286006BC6E4 /* NumberUtil.swift */; };
+		ACA39E972BFDDFF4006BC6E4 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = ACA39E962BFDDFF4006BC6E4 /* SkeletonView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 				ACA39E542BF88DEA006BC6E4 /* RxSwift in Frameworks */,
 				ACA39E8A2BFC2AE0006BC6E4 /* RxDataSources in Frameworks */,
 				AC9B5A6A2BF373E50077635E /* FlexLayout in Frameworks */,
+				ACA39E972BFDDFF4006BC6E4 /* SkeletonView in Frameworks */,
 				ACA39E7E2BFA6024006BC6E4 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +324,7 @@
 				ACA39E7D2BFA6024006BC6E4 /* Starscream */,
 				ACA39E872BFC2AE0006BC6E4 /* Differentiator */,
 				ACA39E892BFC2AE0006BC6E4 /* RxDataSources */,
+				ACA39E962BFDDFF4006BC6E4 /* SkeletonView */,
 			);
 			productName = ToughCookie;
 			productReference = AC5A7C9B2BF2184000A13991 /* ToughCookie.app */;
@@ -358,6 +361,7 @@
 				ACA39E552BF88DFC006BC6E4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				ACA39E7C2BFA6024006BC6E4 /* XCRemoteSwiftPackageReference "Starscream" */,
 				ACA39E862BFC2AE0006BC6E4 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				ACA39E952BFDDFF4006BC6E4 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = AC5A7C9C2BF2184000A13991 /* Products */;
 			projectDirPath = "";
@@ -689,6 +693,14 @@
 				minimumVersion = 5.0.2;
 			};
 		};
+		ACA39E952BFDDFF4006BC6E4 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -731,6 +743,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ACA39E862BFC2AE0006BC6E4 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		ACA39E962BFDDFF4006BC6E4 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACA39E952BFDDFF4006BC6E4 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

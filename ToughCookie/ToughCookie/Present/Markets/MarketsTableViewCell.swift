@@ -30,7 +30,11 @@ class MarketsTableViewCell: BaseTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        
+        [koreanNameLabel, codeNameLabel, tradePriceLabel, changeRateLabel, changeRateLabel, accTradePrice24Label].forEach {
+            $0.text = ""
+            $0.textColor = .white
+            $0.layer.borderWidth = 0
+        }
     }
     
     override func layoutSubviews() {
@@ -166,22 +170,17 @@ extension MarketsTableViewCell {
         accTradePrice24Label.flex.markDirty()
     }
     
-    func test(_ tickerPresentData: TickerPresentData) {
+    func updateSign(_ tickerPresentData: TickerPresentData) {
         
         if tickerPresentData.updateTradePriceSign == .even { return }
         
-        var borderColor: CGColor = UIColor.white.cgColor
+        tradePriceLabel.layer.borderWidth = 0.8
+        tradePriceLabel.layer.borderColor = tickerPresentData.updateTradePriceSign.color.cgColor
         
-        if tickerPresentData.updateTradePriceSign == .rise {
-            borderColor = UIColor.systemRed.cgColor
-        } else if tickerPresentData.updateTradePriceSign == .fall {
-            borderColor = UIColor.systemBlue.cgColor
-        }
-        
-        tradePriceLabel.layer.borderWidth = 0.5
-        tradePriceLabel.layer.borderColor = borderColor
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) { [weak self] in
+            
+            guard let self else { return }
+            
             self.tradePriceLabel.layer.borderWidth = 0
         }
     }

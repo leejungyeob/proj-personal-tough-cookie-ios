@@ -19,6 +19,8 @@ class CoinRepository {
     
     func updateTickerDict(_ data: TickerPresentData) {
         
+        if data.accTradePrice24H < 1000000 { return }
+        
         guard let oldData = tickerDict[data.code] else {
             tickerDict[data.code] = data
             return

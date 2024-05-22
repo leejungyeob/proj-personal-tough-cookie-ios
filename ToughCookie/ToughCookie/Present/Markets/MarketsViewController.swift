@@ -61,10 +61,9 @@ class MarketsViewController: BaseViewController<MarketsView> {
             guard let cell: MarketsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MarketsTableViewCell else { return UITableViewCell() }
             
             cell.configureView(itemIdentifier)
+            cell.updateSign(itemIdentifier)
             
             cell.layoutSubviews()
-            
-            cell.test(itemIdentifier)
             
             return cell
         })
@@ -89,7 +88,7 @@ class MarketsViewController: BaseViewController<MarketsView> {
                 
                 snapshot.appendItems(data, toSection: .main)
                 
-                self.dataSource.apply(snapshot)
+                owner.dataSource.apply(snapshot, animatingDifferences: false)
                 
             }.disposed(by: disposeBag)
     }

@@ -31,8 +31,9 @@ final class MarketsViewModel: ViewModelProtocol {
     func transform(_ input: Input) -> Output {
         
         let sortedTickerPresentDataDriver = sortedTickerPresentData
-            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(100), scheduler: MainScheduler.instance)
             .asDriver(onErrorJustReturn: [TickerPresentData.dummyData()])
+            
         
         return Output(sortedTickerPresentDataDriver: sortedTickerPresentDataDriver)
     }

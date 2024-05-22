@@ -78,7 +78,7 @@ class MarketsTableViewCell: BaseTableViewCell {
         accTradePrice24Label.font = .systemFont(ofSize: 14, weight: .regular)
         
         
-        backgroundColor = .clear
+        backgroundColor = .subBlue
     }
     
     override func configureLayout() {

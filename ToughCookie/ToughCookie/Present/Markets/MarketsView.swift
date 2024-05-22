@@ -17,12 +17,12 @@ class MarketsView: BaseView {
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = .white
         tableView.separatorInset = .zero
+        tableView.bounces = false
         
         addSubview(tableView)
         
         flexView.flex.define { flex in
             
-            flex.addItem().height(10)
             flex.addItem(tableView).grow(1)
         }
     }

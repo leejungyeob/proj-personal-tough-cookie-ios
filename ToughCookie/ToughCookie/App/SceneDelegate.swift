@@ -76,7 +76,7 @@ extension SceneDelegate {
         // MARK: Navigation bar appearance
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
-        navigationBarAppearance.backgroundColor = .black
+        navigationBarAppearance.backgroundColor = .subBlue
         navigationBarAppearance.shadowColor = .clear
         navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         

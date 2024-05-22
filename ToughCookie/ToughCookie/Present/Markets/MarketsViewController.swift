@@ -28,8 +28,6 @@ class MarketsViewController: BaseViewController<MarketsView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        layoutView.tableView.becomeFirstResponder()
-        
     }
     
     override func configureView() {
@@ -38,7 +36,7 @@ class MarketsViewController: BaseViewController<MarketsView> {
         layoutView.tableView.register(MarketsTableViewCell.self, forCellReuseIdentifier: "cell")
         
         let header = MarketsHeaderView()
-        header.backgroundColor = .clear
+        header.backgroundColor = .subBlue
         
         layoutView.tableView.tableHeaderView = header
         

@@ -13,7 +13,7 @@ final class MarketsViewModel: ViewModelProtocol {
     
     var coordinator: Coordinator?
     var repository: CoinRepository = CoinRepository.shared
-    let sortedTickerData = PublishRelay<[TickerData]>()
+    let sortedTickerPresentData = PublishRelay<[TickerPresentData]>()
     
     var disposeBag = DisposeBag()
     
@@ -25,16 +25,16 @@ final class MarketsViewModel: ViewModelProtocol {
     
     struct Output {
         
-        let sortedTickerDataDriver: Driver<[TickerData]>
+        let sortedTickerPresentDataDriver: Driver<[TickerPresentData]>
     }
     
     func transform(_ input: Input) -> Output {
         
-        let sortedTickerDataDriver = sortedTickerData
+        let sortedTickerPresentDataDriver = sortedTickerPresentData
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
-            .asDriver(onErrorJustReturn: [TickerData.dummyData()])
+            .asDriver(onErrorJustReturn: [TickerPresentData.dummyData()])
         
-        return Output(sortedTickerDataDriver: sortedTickerDataDriver)
+        return Output(sortedTickerPresentDataDriver: sortedTickerPresentDataDriver)
     }
     
     func connect() {
@@ -60,13 +60,14 @@ final class MarketsViewModel: ViewModelProtocol {
                 
                 guard let tickerData: TickerData = try? JSONDecoder().decode(TickerData.self, from: data) else { return }
                 
+                let tickerPresentData = tickerData.transformToTickerPresentData()
                 // Ticker Data 저장(업데이트)
-                self.repository.updateTickerDict(tickerData)
+                self.repository.updateTickerDict(tickerPresentData)
                 
                 // 정렬된 Ticker Data 생성
-                let sortedTickerData = self.repository.sortedTickerList()
+                let sortedTickerPresentData = self.repository.sortedTickerList()
                 
-                self.sortedTickerData.accept(sortedTickerData)
+                self.sortedTickerPresentData.accept(sortedTickerPresentData)
                 
             default: return
             }

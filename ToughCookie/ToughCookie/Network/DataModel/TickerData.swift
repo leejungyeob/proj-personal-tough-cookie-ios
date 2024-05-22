@@ -79,8 +79,8 @@ struct TickerData: Decodable, Hashable {
         case streamType = "stream_type"
     }
     
-    static func dummyData() -> TickerData {
+    func transformToTickerPresentData() -> TickerPresentData {
         
-        return TickerData(type: "-", code: "-", openingPrice: 0, highPrice: 0, lowPrice: 0, tradePrice: 0, prevClosingPrice: 0, change: "-", changePrice: 0, signedChangePrice: 0, changeRate: 0, signedChangeRate: 0, tradeVolume: 0, accTradeVolume: 0, accTradeVolume24H: 0, accTradePrice: 0, accTradePrice24H: 0, tradeDate: "-", tradeTime: "-", tradeTimestamp: 0, askBid: "-", accAskVolume: 0, accBidVolume: 0, highest52WeekPrice: 0, highest52WeekDate: "-", lowest52WeekPrice: 9999, lowest52WeekDate: "-", tradeStatus: "-", marketState: "-", marketStateForIOS: "-", isTradingSuspended: false, delistingDate: "-", marketWarning: "-", timestamp: 0, streamType: "-")
+        return TickerPresentData(type: type, code: code, openingPrice: openingPrice, highPrice: highPrice, lowPrice: lowPrice, tradePrice: tradePrice, prevClosingPrice: prevClosingPrice, change: change, changePrice: changePrice, signedChangePrice: signedChangePrice, changeRate: changeRate, signedChangeRate: signedChangeRate, tradeVolume: tradeVolume, accTradeVolume: accTradeVolume, accTradeVolume24H: accTradeVolume24H, accTradePrice: accTradePrice, accTradePrice24H: accTradePrice24H, tradeDate: tradeDate, tradeTime: tradeTime, tradeTimestamp: tradeTimestamp, askBid: askBid, accAskVolume: accAskVolume, accBidVolume: accAskVolume, highest52WeekPrice: highest52WeekPrice, highest52WeekDate: highest52WeekDate, lowest52WeekPrice: lowest52WeekPrice, lowest52WeekDate: lowest52WeekDate, tradeStatus: tradeStatus, marketState: marketState, marketStateForIOS: marketStateForIOS, isTradingSuspended: isTradingSuspended, delistingDate: delistingDate, marketWarning: marketWarning, timestamp: timestamp, streamType: streamType)
     }
 }

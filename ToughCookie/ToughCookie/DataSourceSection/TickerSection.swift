@@ -6,19 +6,7 @@
 //
 
 import Foundation
-import RxDataSources
 
-struct TickerSection {
-    
-    var items: [Item]
-}
-
-extension TickerSection: SectionModelType {
-    
-    typealias Item = TickerData
-    
-    init(original: TickerSection, items: [Item]) {
-        self = original
-        self.items = items
-    }
+enum TickerMySection {
+    case main
 }

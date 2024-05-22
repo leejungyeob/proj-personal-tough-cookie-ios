@@ -8,17 +8,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxDataSources
-
-enum TickerMySection {
-    case main
-}
 
 class MarketsViewController: BaseViewController<MarketsView> {
     
     var viewModel: MarketsViewModel
     
-    private var dataSource: UITableViewDiffableDataSource<TickerMySection, TickerData>!
+    private var dataSource: UITableViewDiffableDataSource<TickerMySection, TickerPresentData>!
     
     init(viewModel: MarketsViewModel) {
         self.viewModel = viewModel
@@ -32,6 +27,8 @@ class MarketsViewController: BaseViewController<MarketsView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        layoutView.tableView.becomeFirstResponder()
         
     }
     
@@ -83,10 +80,10 @@ class MarketsViewController: BaseViewController<MarketsView> {
         let output = viewModel.transform(input)
         
         // RxDataSource 연결
-        output.sortedTickerDataDriver
+        output.sortedTickerPresentDataDriver
             .drive(with: self) { owner, data in
                 
-                var snapshot = NSDiffableDataSourceSnapshot<TickerMySection, TickerData>()
+                var snapshot = NSDiffableDataSourceSnapshot<TickerMySection, TickerPresentData>()
                 
                 snapshot.appendSections([TickerMySection.main])
                 

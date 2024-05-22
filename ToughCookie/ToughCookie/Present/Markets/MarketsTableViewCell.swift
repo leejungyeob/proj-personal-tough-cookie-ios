@@ -129,49 +129,59 @@ class MarketsTableViewCell: BaseTableViewCell {
 
 extension MarketsTableViewCell {
     
-    func configureView(_ tickerData: TickerData) {
+    func configureView(_ tickerPresentData: TickerPresentData) {
         
-        let marketData = CoinRepository.shared.getMarketDatumByTicker(tickerData)
-        let sign = CoinSign(rawValue: tickerData.change) ?? .even
+        let marketData = CoinRepository.shared.getMarketDatumByTickerPresentData(tickerPresentData)
+        let sign = CoinSign(rawValue: tickerPresentData.change) ?? .even
         
         koreanNameLabel.text = marketData.koreanName
         koreanNameLabel.adjustsFontSizeToFitWidth = true
         koreanNameLabel.flex.markDirty()
         
-        codeNameLabel.text = tickerData.code
+        codeNameLabel.text = tickerPresentData.code
         codeNameLabel.adjustsFontSizeToFitWidth = true
         codeNameLabel.flex.markDirty()
         
-        let tradePrice = NumberUtil.changeDoubleToDecimalStr(tickerData.tradePrice)
+        let tradePrice = NumberUtil.changeDoubleToDecimalStr(tickerPresentData.tradePrice)
         tradePriceLabel.text = tradePrice
         tradePriceLabel.textColor = sign.color
         tradePriceLabel.adjustsFontSizeToFitWidth = true
         tradePriceLabel.flex.markDirty()
         
-        let changeRate = NumberUtil.changeDecimalToPercentage(tickerData.changeRate)
+        let changeRate = NumberUtil.changeDecimalToPercentage(tickerPresentData.changeRate)
         changeRateLabel.text = "\(sign.sign)\(changeRate)%"
         changeRateLabel.textColor = sign.color
         changeRateLabel.adjustsFontSizeToFitWidth = true
         changeRateLabel.flex.markDirty()
         
-        let changePrice = NumberUtil.changeDoubleToDecimalStr(tickerData.changePrice)
+        let changePrice = NumberUtil.changeDoubleToDecimalStr(tickerPresentData.changePrice)
         changePriceLabel.text = "\(sign.sign)\(changePrice)"
         changePriceLabel.textColor = sign.color
         changePriceLabel.adjustsFontSizeToFitWidth = true
         changePriceLabel.flex.markDirty()
         
-        let accTradePrice24H = NumberUtil.changeDoubleToOneMillionStr(tickerData.accTradePrice24H)
+        let accTradePrice24H = NumberUtil.changeDoubleToOneMillionStr(tickerPresentData.accTradePrice24H)
         accTradePrice24Label.text = "\(accTradePrice24H)"
         accTradePrice24Label.adjustsFontSizeToFitWidth = true
         accTradePrice24Label.flex.markDirty()
     }
     
-    func test(_ tickerData: TickerData) {
-        tradePriceLabel.layer.borderWidth = 0.3
-        tradePriceLabel.layer.cornerRadius = 5
-        tradePriceLabel.layer.borderColor = UIColor.systemRed.cgColor
+    func test(_ tickerPresentData: TickerPresentData) {
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+        if tickerPresentData.updateTradePriceSign == .even { return }
+        
+        var borderColor: CGColor = UIColor.white.cgColor
+        
+        if tickerPresentData.updateTradePriceSign == .rise {
+            borderColor = UIColor.systemRed.cgColor
+        } else if tickerPresentData.updateTradePriceSign == .fall {
+            borderColor = UIColor.systemBlue.cgColor
+        }
+        
+        tradePriceLabel.layer.borderWidth = 0.5
+        tradePriceLabel.layer.borderColor = borderColor
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             self.tradePriceLabel.layer.borderWidth = 0
         }
     }

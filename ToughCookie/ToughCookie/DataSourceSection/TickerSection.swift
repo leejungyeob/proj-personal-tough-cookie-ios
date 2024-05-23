@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum TickerMySection {
+enum TickerSection: Int {
     case main
 }

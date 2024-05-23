@@ -13,7 +13,7 @@ class MarketsViewController: BaseViewController<MarketsView> {
     
     var viewModel: MarketsViewModel
     
-    private var dataSource: UITableViewDiffableDataSource<TickerMySection, TickerPresentData>!
+    private var dataSource: UITableViewDiffableDataSource<TickerSection, TickerPresentData>!
     
     init(viewModel: MarketsViewModel) {
         self.viewModel = viewModel
@@ -34,6 +34,9 @@ class MarketsViewController: BaseViewController<MarketsView> {
         
         layoutView.tableView.delegate = self
         layoutView.tableView.register(MarketsTableViewCell.self, forCellReuseIdentifier: "cell")
+        layoutView.tableView.register(TickerMainSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+        
+        layoutView.tableView.sectionHeaderTopPadding = 0
         
         let header = MarketsHeaderView()
         header.backgroundColor = .subBlue
@@ -80,9 +83,9 @@ class MarketsViewController: BaseViewController<MarketsView> {
         output.sortedTickerPresentDataDriver
             .drive(with: self) { owner, data in
                 
-                var snapshot = NSDiffableDataSourceSnapshot<TickerMySection, TickerPresentData>()
+                var snapshot = NSDiffableDataSourceSnapshot<TickerSection, TickerPresentData>()
                 
-                snapshot.appendSections([TickerMySection.main])
+                snapshot.appendSections([TickerSection.main])
                 
                 snapshot.appendItems(data, toSection: .main)
                 
@@ -98,5 +101,18 @@ extension MarketsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard let section = TickerSection(rawValue: section) else { return nil }
+        
+        switch section {
+        case .main:
+            
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? TickerMainSectionHeaderView else { return nil }
+            
+            return header
+        }
     }
 }

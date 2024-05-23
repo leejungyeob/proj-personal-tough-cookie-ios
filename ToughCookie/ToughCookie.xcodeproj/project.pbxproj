@@ -15,6 +15,8 @@
 		AC5A7CA82BF2184200A13991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC5A7CA72BF2184200A13991 /* Assets.xcassets */; };
 		AC5A7CAB2BF2184200A13991 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AC5A7CAA2BF2184200A13991 /* Base */; };
 		AC65FACB2BFE32E1005C4236 /* TickerPresentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FACA2BFE32E1005C4236 /* TickerPresentData.swift */; };
+		AC65FACE2BFF098E005C4236 /* TickerMainSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FACD2BFF098E005C4236 /* TickerMainSectionHeaderView.swift */; };
+		AC65FAD12BFF280C005C4236 /* UIButton++.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FAD02BFF280C005C4236 /* UIButton++.swift */; };
 		AC9B5A6A2BF373E50077635E /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A692BF373E50077635E /* FlexLayout */; };
 		AC9B5A6D2BF373EF0077635E /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A6C2BF373EF0077635E /* PinLayout */; };
 		AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A6E2BF374040077635E /* BaseViewController.swift */; };
@@ -62,6 +64,8 @@
 		AC5A7CAA2BF2184200A13991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC5A7CAC2BF2184200A13991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC65FACA2BFE32E1005C4236 /* TickerPresentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerPresentData.swift; sourceTree = "<group>"; };
+		AC65FACD2BFF098E005C4236 /* TickerMainSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerMainSectionHeaderView.swift; sourceTree = "<group>"; };
+		AC65FAD02BFF280C005C4236 /* UIButton++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton++.swift"; sourceTree = "<group>"; };
 		AC9B5A6E2BF374040077635E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AC9B5A702BF3749E0077635E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsHeaderView.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 		AC5A7C9D2BF2184000A13991 /* ToughCookie */ = {
 			isa = PBXGroup;
 			children = (
+				AC65FACF2BFF2801005C4236 /* Extension */,
 				ACA39E922BFC9259006BC6E4 /* Util */,
 				ACA39E8D2BFC700C006BC6E4 /* DataSourceSection */,
 				ACA39E812BFB9D9A006BC6E4 /* Repository */,
@@ -162,6 +167,24 @@
 				AC5A7CAC2BF2184200A13991 /* Info.plist */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		AC65FACC2BFF0712005C4236 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */,
+				AC3248A82BF5103400BEC811 /* MarketsTableViewCell.swift */,
+				AC65FACD2BFF098E005C4236 /* TickerMainSectionHeaderView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		AC65FACF2BFF2801005C4236 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC65FAD02BFF280C005C4236 /* UIButton++.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		AC9B5A672BF373C40077635E /* Base */ = {
@@ -247,8 +270,7 @@
 				ACA39E712BF91202006BC6E4 /* MarketsViewModel.swift */,
 				AC3248A42BF4E79F00BEC811 /* MarketsViewController.swift */,
 				AC3248A62BF4E7AB00BEC811 /* MarketsView.swift */,
-				ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */,
-				AC3248A82BF5103400BEC811 /* MarketsTableViewCell.swift */,
+				AC65FACC2BFF0712005C4236 /* TableView */,
 			);
 			path = Markets;
 			sourceTree = "<group>";
@@ -409,9 +431,11 @@
 				ACA39E942BFC9286006BC6E4 /* NumberUtil.swift in Sources */,
 				ACA39E612BF89825006BC6E4 /* MarketData.swift in Sources */,
 				ACA39E592BF891D7006BC6E4 /* RouterProtocol.swift in Sources */,
+				AC65FAD12BFF280C005C4236 /* UIButton++.swift in Sources */,
 				ACA39E5C2BF8926D006BC6E4 /* UpbitRouter.swift in Sources */,
 				ACA39E6A2BF8B81F006BC6E4 /* LaunchViewController.swift in Sources */,
 				AC3248A52BF4E79F00BEC811 /* MarketsViewController.swift in Sources */,
+				AC65FACE2BFF098E005C4236 /* TickerMainSectionHeaderView.swift in Sources */,
 				AC9B5A712BF3749E0077635E /* BaseView.swift in Sources */,
 				AC5A7C9F2BF2184000A13991 /* AppDelegate.swift in Sources */,
 				ACA39E2E2BF6303C006BC6E4 /* MarketsHeaderView.swift in Sources */,

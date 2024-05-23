@@ -174,10 +174,10 @@ extension MarketsTableViewCell {
         
         if tickerPresentData.updateTradePriceSign == .even { return }
         
-        tradePriceLabel.layer.borderWidth = 0.8
+        tradePriceLabel.layer.borderWidth = 1
         tradePriceLabel.layer.borderColor = tickerPresentData.updateTradePriceSign.color.cgColor
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { [weak self] in
             
             guard let self else { return }
             

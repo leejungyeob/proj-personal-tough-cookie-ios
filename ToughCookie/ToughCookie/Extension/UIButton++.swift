@@ -9,14 +9,14 @@ import UIKit
 
 extension UIButton {
     
-    func sectionTitleButtion(title: String, image: UIImage?) {
+    func sectionTitleButtion(title: String, image: UIImage?, color: UIColor) {
         
         var buttonConfiguration = UIButton.Configuration.plain()
         
-        buttonConfiguration.image = image?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        buttonConfiguration.image = image?.withTintColor(color, renderingMode: .alwaysOriginal)
         buttonConfiguration.imagePadding = 3
         buttonConfiguration.title = title
-        buttonConfiguration.baseForegroundColor = .white
+        buttonConfiguration.baseForegroundColor = color
         buttonConfiguration.imagePlacement = .trailing
         buttonConfiguration.titleAlignment = .leading
         buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)

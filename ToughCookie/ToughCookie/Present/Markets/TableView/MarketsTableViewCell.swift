@@ -11,7 +11,7 @@ import PinLayout
 
 class MarketsTableViewCell: BaseTableViewCell {
     
-    let koreanNameLabel = UILabel()
+    let coinNameLabel = UILabel()
     let codeNameLabel = UILabel()
     let tradePriceLabel = UILabel()
     let changeRateLabel = UILabel()
@@ -30,7 +30,7 @@ class MarketsTableViewCell: BaseTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        [koreanNameLabel, codeNameLabel, tradePriceLabel, changeRateLabel, changeRateLabel, accTradePrice24Label].forEach {
+        [coinNameLabel, codeNameLabel, tradePriceLabel, changeRateLabel, changeRateLabel, accTradePrice24Label].forEach {
             $0.text = ""
             $0.textColor = .white
             $0.layer.borderWidth = 0
@@ -59,8 +59,8 @@ class MarketsTableViewCell: BaseTableViewCell {
     
     override func configure() {
         
-        koreanNameLabel.textColor = .white
-        koreanNameLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        coinNameLabel.textColor = .white
+        coinNameLabel.font = .systemFont(ofSize: 14, weight: .regular)
         
         codeNameLabel.textColor = .white
         codeNameLabel.font = .systemFont(ofSize: 11, weight: .light)
@@ -91,7 +91,7 @@ class MarketsTableViewCell: BaseTableViewCell {
                 .marginVertical(7)
                 .define { flex in
                     
-                flex.addItem(koreanNameLabel)
+                flex.addItem(coinNameLabel)
                 flex.addItem(codeNameLabel)
             }
             
@@ -138,9 +138,11 @@ extension MarketsTableViewCell {
         let marketData = CoinRepository.shared.getMarketDatumByTickerPresentData(tickerPresentData)
         let sign = CoinSign(rawValue: tickerPresentData.change) ?? .even
         
-        koreanNameLabel.text = marketData.koreanName
-        koreanNameLabel.adjustsFontSizeToFitWidth = true
-        koreanNameLabel.flex.markDirty()
+        let coinName = CoinRepository.shared.languageType == .korean ? marketData.koreanName : marketData.englishName
+        
+        coinNameLabel.text = coinName
+        coinNameLabel.adjustsFontSizeToFitWidth = true
+        coinNameLabel.flex.markDirty()
         
         codeNameLabel.text = tickerPresentData.code
         codeNameLabel.adjustsFontSizeToFitWidth = true

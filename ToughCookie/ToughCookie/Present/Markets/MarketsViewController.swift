@@ -76,8 +76,8 @@ class MarketsViewController: BaseViewController<MarketsView> {
         
         viewModel.connect()
         
-        let input = MarketsViewModel.Input()
-        let output = viewModel.transform(input)
+        // let input = MarketsViewModel.Input()
+        let output = viewModel.transform(viewModel.input)
         
         // RxDataSource 연결
         output.sortedTickerPresentDataDriver
@@ -90,6 +90,20 @@ class MarketsViewController: BaseViewController<MarketsView> {
                 snapshot.appendItems(data, toSection: .main)
                 
                 owner.dataSource.apply(snapshot, animatingDifferences: false)
+                
+            }.disposed(by: disposeBag)
+        
+        output.languageTypeDriver
+            .drive(with: self) { owner, _ in
+                
+                owner.layoutView.tableView.reloadData()
+                
+            }.disposed(by: disposeBag)
+        
+        output.sortedTypeDriver
+            .drive(with: self) { owner, _ in
+                
+                owner.layoutView.tableView.reloadData()
                 
             }.disposed(by: disposeBag)
     }
@@ -111,6 +125,39 @@ extension MarketsViewController: UITableViewDelegate {
         case .main:
             
             guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? TickerMainSectionHeaderView else { return nil }
+            
+            // 타이틀 언어 변경
+            header.titleLanguageButton.rx.tap
+                .subscribe(with: self) { owner, _ in
+                    
+                    owner.viewModel.input.languageTypeRelay.accept(())
+                    header.updateTitleLanguage()
+                }.disposed(by: header.disposeBag)
+            
+            // 현재가 정렬
+            header.tradePriceButton.rx.tap
+                .subscribe(with: self) { owner, _ in
+                    
+                    owner.viewModel.input.sortedTypeRelay.accept(.tradePrice)
+                    header.updateSortedType()
+                }.disposed(by: header.disposeBag)
+            
+            // 전일대비 정렬
+            header.changeButton.rx.tap
+                .subscribe(with: self) { owner, _ in
+                    
+                    owner.viewModel.input.sortedTypeRelay.accept(.change)
+                    header.updateSortedType()
+                }.disposed(by: header.disposeBag)
+            
+            // 거래대금 정렬
+            header.accTradePriceButton.rx.tap
+                .subscribe(with: self) { owner, _ in
+                    
+                    owner.viewModel.input.sortedTypeRelay.accept(.accTradePrice)
+                    header.updateSortedType()
+                }.disposed(by: header.disposeBag)
+            
             
             return header
         }

@@ -29,6 +29,11 @@ class BaseViewController<LayoutView: UIView>: UIViewController {
         bind()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.layoutView.endEditing(true)
+    }
+    
     func configureView() { }
     
     func configureTableView() { }

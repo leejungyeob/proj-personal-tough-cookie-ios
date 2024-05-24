@@ -15,6 +15,8 @@ class MarketsView: BaseView {
     
     override func configureView() {
         
+        flexView.backgroundColor = .subBlue
+        
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = .white

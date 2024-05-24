@@ -40,6 +40,9 @@ class MarketsViewController: BaseViewController<MarketsView> {
         
         let header = MarketsHeaderView()
         header.backgroundColor = .subBlue
+        header.searchBar.delegate = self
+        header.searchBar.searchTextField.delegate = self
+        header.searchBar.enablesReturnKeyAutomatically = false
         
         layoutView.tableView.tableHeaderView = header
         
@@ -161,5 +164,27 @@ extension MarketsViewController: UITableViewDelegate {
             
             return header
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        self.layoutView.endEditing(true)
+    }
+}
+
+extension MarketsViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.layoutView.endEditing(true)
+        
+        return true
+    }
+}
+
+extension MarketsViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        CoinRepository.shared.searchFilter = searchText == "" ? nil : searchText
     }
 }

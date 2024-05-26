@@ -10,6 +10,8 @@ import UIKit
 protocol MarketsCoordinatorProtocol: Coordinator {
     
     func showMarketsTabView()
+    
+    func pushCoinVC(_ data: TickerPresentData)
 }
 
 class MarketsCoordinator: MarketsCoordinatorProtocol {
@@ -45,6 +47,17 @@ extension MarketsCoordinator {
         self.navigationController.pushViewController(marketsViewController, animated: false)
         
         self.navigationController.navigationBar.topItem?.title = coordinatorType.title
+    }
+    
+    func pushCoinVC(_ data: TickerPresentData) {
+        
+        let rootView = CoinView()
+        let viewModel = CoinViewModel(coordinator: self, tickerPresentData: data)
+        viewModel.connect()
+        
+        let coinViewController = CoinViewController(rootView: rootView, viewModel: viewModel)
+        
+        self.navigationController.pushViewController(coinViewController, animated: true)
     }
 }
 

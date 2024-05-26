@@ -28,7 +28,7 @@ class WebSocketManager {
 extension WebSocketManager {
     
     func connect() -> WebSocket {
-        print(Thread.isMainThread)
+        
         websocket.connect()
         return websocket
     }

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class MarketsViewModel: ViewModelProtocol {
     
-    var coordinator: Coordinator?
+    var coordinator: Coordinator
     var repository: CoinRepository = CoinRepository.shared
     
     let sortedTickerPresentData = PublishRelay<[TickerPresentData]>()
@@ -28,6 +28,7 @@ final class MarketsViewModel: ViewModelProtocol {
         
         let languageTypeRelay = PublishRelay<Void>()
         let sortedTypeRelay = PublishRelay<CoinSortedType>()
+        let cellSelectedRelay = PublishRelay<TickerPresentData>()
     }
     
     struct Output {
@@ -100,6 +101,15 @@ final class MarketsViewModel: ViewModelProtocol {
             sortedTypeDriver.accept(())
             
         }.disposed(by: disposeBag)
+        
+        input.cellSelectedRelay
+            .subscribe(with: self) { owner, tickerPresentData in
+                
+                guard let coordinator = owner.coordinator as? MarketsCoordinator else { return }
+                
+                coordinator.pushCoinVC(tickerPresentData)
+                
+            }.disposed(by: disposeBag)
         
         
         return Output(sortedTickerPresentDataDriver: sortedTickerPresentDataDriver,

@@ -115,6 +115,13 @@ class MarketsViewController: BaseViewController<MarketsView> {
 
 extension MarketsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let tickerPresentData = self.dataSource.itemIdentifier(for: indexPath) else { return }
+        
+        self.viewModel.input.cellSelectedRelay.accept(tickerPresentData)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return UITableView.automaticDimension

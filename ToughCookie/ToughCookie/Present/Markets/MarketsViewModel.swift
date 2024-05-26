@@ -108,6 +108,7 @@ final class MarketsViewModel: ViewModelProtocol {
                 guard let coordinator = owner.coordinator as? MarketsCoordinator else { return }
                 
                 coordinator.pushCoinVC(tickerPresentData)
+                WebSocketManager.shared.disconnect()
                 
             }.disposed(by: disposeBag)
         

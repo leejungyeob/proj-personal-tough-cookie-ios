@@ -30,6 +30,10 @@ class MarketsViewController: BaseViewController<MarketsView> {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func configureView() {
         
         layoutView.tableView.delegate = self
@@ -77,9 +81,12 @@ class MarketsViewController: BaseViewController<MarketsView> {
     
     override func bind() {
         
-        viewModel.connect()
+        self.rx.viewWillAppearObservable
+            .subscribe(with: self) { owner, _ in
+                
+                owner.viewModel.connect()
+            }.disposed(by: disposeBag)
         
-        // let input = MarketsViewModel.Input()
         let output = viewModel.transform(viewModel.input)
         
         // RxDataSource 연결

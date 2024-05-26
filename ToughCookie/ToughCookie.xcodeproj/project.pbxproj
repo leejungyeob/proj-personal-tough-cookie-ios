@@ -20,6 +20,7 @@
 		AC65FAD42C031520005C4236 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FAD32C031520005C4236 /* CoinViewController.swift */; };
 		AC65FAD82C0317F4005C4236 /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FAD72C0317F4005C4236 /* CoinView.swift */; };
 		AC65FADA2C031E43005C4236 /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FAD92C031E43005C4236 /* CoinViewModel.swift */; };
+		AC65FADC2C0329FB005C4236 /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FADB2C0329FB005C4236 /* UIViewController++.swift */; };
 		AC9B5A6A2BF373E50077635E /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A692BF373E50077635E /* FlexLayout */; };
 		AC9B5A6D2BF373EF0077635E /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC9B5A6C2BF373EF0077635E /* PinLayout */; };
 		AC9B5A6F2BF374040077635E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B5A6E2BF374040077635E /* BaseViewController.swift */; };
@@ -72,6 +73,7 @@
 		AC65FAD32C031520005C4236 /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
 		AC65FAD72C0317F4005C4236 /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
 		AC65FAD92C031E43005C4236 /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
+		AC65FADB2C0329FB005C4236 /* UIViewController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
 		AC9B5A6E2BF374040077635E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AC9B5A702BF3749E0077635E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ACA39E2D2BF6303C006BC6E4 /* MarketsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsHeaderView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				AC65FAD02BFF280C005C4236 /* UIButton++.swift */,
+				AC65FADB2C0329FB005C4236 /* UIViewController++.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				ACA39E942BFC9286006BC6E4 /* NumberUtil.swift in Sources */,
 				ACA39E612BF89825006BC6E4 /* MarketData.swift in Sources */,
 				ACA39E592BF891D7006BC6E4 /* RouterProtocol.swift in Sources */,
+				AC65FADC2C0329FB005C4236 /* UIViewController++.swift in Sources */,
 				AC65FAD12BFF280C005C4236 /* UIButton++.swift in Sources */,
 				ACA39E5C2BF8926D006BC6E4 /* UpbitRouter.swift in Sources */,
 				ACA39E6A2BF8B81F006BC6E4 /* LaunchViewController.swift in Sources */,

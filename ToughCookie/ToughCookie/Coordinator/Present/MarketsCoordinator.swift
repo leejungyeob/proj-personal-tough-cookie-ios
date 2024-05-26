@@ -43,6 +43,7 @@ extension MarketsCoordinator {
         
         let marketsViewModel = MarketsViewModel(coordinator: self)
         let marketsViewController = MarketsViewController(viewModel: marketsViewModel)
+        marketsViewModel.connect()
         
         self.navigationController.pushViewController(marketsViewController, animated: false)
         
@@ -52,10 +53,10 @@ extension MarketsCoordinator {
     func pushCoinVC(_ data: TickerPresentData) {
         
         let rootView = CoinView()
-        let viewModel = CoinViewModel(coordinator: self, tickerPresentData: data)
-        viewModel.connect()
+        let coinViewModel = CoinViewModel(coordinator: self, tickerPresentData: data)
+        coinViewModel.connect()
         
-        let coinViewController = CoinViewController(rootView: rootView, viewModel: viewModel)
+        let coinViewController = CoinViewController(rootView: rootView, viewModel: coinViewModel)
         
         self.navigationController.pushViewController(coinViewController, animated: true)
     }

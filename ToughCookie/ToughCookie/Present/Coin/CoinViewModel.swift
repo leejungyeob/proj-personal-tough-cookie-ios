@@ -16,6 +16,8 @@ final class CoinViewModel: ViewModelProtocol {
     
     var repository: CoinRepository = CoinRepository.shared
     
+    let input = Input()
+    
     var disposeBag = DisposeBag()
     
     struct Input { }
@@ -53,10 +55,16 @@ final class CoinViewModel: ViewModelProtocol {
                 // 데이터 수신
             case .binary(let data):
                 
-                dump(data)
+                guard let orderBookData: OrderBookData = try? JSONDecoder().decode(OrderBookData.self, from: data) else { return }
+                
+                dump(orderBookData)
                 
             default: return
             }
         }
+    }
+    
+    func disconnect() {
+        WebSocketManager.shared.disconnect()
     }
 }

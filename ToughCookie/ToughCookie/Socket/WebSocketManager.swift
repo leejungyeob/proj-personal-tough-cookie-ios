@@ -28,7 +28,6 @@ class WebSocketManager {
 extension WebSocketManager {
     
     func connect() -> WebSocket {
-        
         websocket.connect()
         return websocket
     }

@@ -30,10 +30,6 @@ class MarketsViewController: BaseViewController<MarketsView> {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func configureView() {
         
         layoutView.tableView.delegate = self
@@ -81,7 +77,8 @@ class MarketsViewController: BaseViewController<MarketsView> {
     
     override func bind() {
         
-        self.rx.viewWillAppearObservable
+        // Coin VC -> 재연결
+        self.rx.viewDidAppearObservable
             .subscribe(with: self) { owner, _ in
                 
                 owner.viewModel.connect()
@@ -103,6 +100,7 @@ class MarketsViewController: BaseViewController<MarketsView> {
                 
             }.disposed(by: disposeBag)
         
+        // 섹션 헤더 한글명/영문명 변경
         output.languageTypeDriver
             .drive(with: self) { owner, _ in
                 
@@ -110,6 +108,7 @@ class MarketsViewController: BaseViewController<MarketsView> {
                 
             }.disposed(by: disposeBag)
         
+        // 섹션 헤더 정렬 기준 변경
         output.sortedTypeDriver
             .drive(with: self) { owner, _ in
                 

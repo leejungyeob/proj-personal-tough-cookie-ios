@@ -19,7 +19,7 @@ class MarketsView: BaseView {
         
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .singleLine
-        tableView.separatorColor = .white
+        tableView.separatorColor = .lightGray.withAlphaComponent(0.3)
         tableView.separatorInset = .zero
         tableView.bounces = false
         

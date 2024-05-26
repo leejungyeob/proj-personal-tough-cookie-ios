@@ -19,6 +19,7 @@ class MarketsHeaderView: UIView {
         let customWhite = UIColor.white.withAlphaComponent(0.6)
         searchBar.searchTextField.backgroundColor = .clear
         searchBar.searchTextField.leftView?.tintColor = .white
+        searchBar.searchTextField.font = .systemFont(ofSize: 15, weight: .light)
         searchBar.searchTextField.textColor = .white
         searchBar.searchBarStyle = .minimal
         

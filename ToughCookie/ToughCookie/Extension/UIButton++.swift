@@ -21,7 +21,7 @@ extension UIButton {
         buttonConfiguration.titleAlignment = .leading
         buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         var titleAttribute = AttributeContainer()
-        titleAttribute.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        titleAttribute.font = UIFont.systemFont(ofSize: 13, weight: .thin)
         buttonConfiguration.attributedTitle = AttributedString(title, attributes: titleAttribute)
         
         self.configuration = buttonConfiguration

@@ -57,7 +57,7 @@ final class CoinViewModel: ViewModelProtocol {
                 
                 guard let orderBookData: OrderBookData = try? JSONDecoder().decode(OrderBookData.self, from: data) else { return }
                 
-                dump(orderBookData)
+                
                 
             default: return
             }

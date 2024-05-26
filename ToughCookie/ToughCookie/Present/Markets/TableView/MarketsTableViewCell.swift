@@ -32,7 +32,7 @@ class MarketsTableViewCell: BaseTableViewCell {
         
         [coinNameLabel, codeNameLabel, tradePriceLabel, changeRateLabel, changeRateLabel, accTradePrice24Label].forEach {
             $0.text = ""
-            $0.textColor = .white
+            $0.textColor = $0 == codeNameLabel ? .lightGray : .white
             $0.layer.borderWidth = 0
         }
     }
@@ -60,22 +60,22 @@ class MarketsTableViewCell: BaseTableViewCell {
     override func configure() {
         
         coinNameLabel.textColor = .white
-        coinNameLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        coinNameLabel.font = .systemFont(ofSize: 13, weight: .thin)
         
-        codeNameLabel.textColor = .white
-        codeNameLabel.font = .systemFont(ofSize: 11, weight: .light)
+        codeNameLabel.textColor = .lightGray
+        codeNameLabel.font = .systemFont(ofSize: 11, weight: .thin)
         
         tradePriceLabel.textColor = .white
-        tradePriceLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        tradePriceLabel.font = .systemFont(ofSize: 13, weight: .thin)
         
         changeRateLabel.textColor = .white
-        changeRateLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        changeRateLabel.font = .systemFont(ofSize: 13, weight: .thin)
         
         changePriceLabel.textColor = .white
-        changePriceLabel.font = .systemFont(ofSize: 11, weight: .regular)
+        changePriceLabel.font = .systemFont(ofSize: 11, weight: .thin)
         
         accTradePrice24Label.textColor = .white
-        accTradePrice24Label.font = .systemFont(ofSize: 14, weight: .regular)
+        accTradePrice24Label.font = .systemFont(ofSize: 13, weight: .thin)
         
         
         backgroundColor = .subBlue
@@ -134,6 +134,8 @@ class MarketsTableViewCell: BaseTableViewCell {
 extension MarketsTableViewCell {
     
     func configureView(_ tickerPresentData: TickerPresentData) {
+        
+        self.selectionStyle = .none
         
         let marketData = CoinRepository.shared.getMarketDatumByTickerPresentData(tickerPresentData)
         let sign = CoinSign(rawValue: tickerPresentData.change) ?? .even

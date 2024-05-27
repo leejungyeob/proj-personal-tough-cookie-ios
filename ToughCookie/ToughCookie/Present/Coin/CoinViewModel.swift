@@ -12,23 +12,21 @@ import Combine
 
 final class CoinViewModel: ObservableObject {
     
-    var cancellable = Set<AnyCancellable>()
+    private var cancellable = Set<AnyCancellable>()
+    private var coordinator: Coordinator
     
-    var coordinator: Coordinator
     var tickerPresentData: TickerPresentData
+    @Published var askOrderBook: [OrderBookItem] = []
+    @Published var bidOrderBook: [OrderBookItem] = []
+    @Published var updateTickerData: TickerPresentData = .dummyData()
     
-    var repository: CoinRepository = CoinRepository.shared
-    let coinWebSocket = WebSocketManager()
-    let marketWebSocket = WebSocketManager()
+    private var repository: CoinRepository = CoinRepository.shared
+    private let coinWebSocket = WebSocketManager()
+    private let marketWebSocket = WebSocketManager()
     
-    @Published
-    var askOrderBook: [OrderBookItem] = []
-    
-    @Published
-    var bidOrderBook: [OrderBookItem] = []
-    
-    var receivedAskOrderBook = PassthroughSubject<[OrderBookItem], Never>()
-    var receivedBidOrderBook = PassthroughSubject<[OrderBookItem], Never>()
+    private var receivedAskOrderBook = PassthroughSubject<[OrderBookItem], Never>()
+    private var receivedBidOrderBook = PassthroughSubject<[OrderBookItem], Never>()
+    private var receivedTickerPresentData = PassthroughSubject<TickerPresentData, Never>()
     
     var disposeBag = DisposeBag()
     
@@ -36,16 +34,25 @@ final class CoinViewModel: ObservableObject {
         self.coordinator = coordinator
         self.tickerPresentData = tickerPresentData
         
+        // ask Order Book 업데이트
         receivedAskOrderBook
             .receive(on: DispatchQueue.main)
             .sink { orderBookItems in
                 self.askOrderBook = orderBookItems
             }.store(in: &cancellable)
         
+        // bid Order Book 업데이트
         receivedBidOrderBook
             .receive(on: DispatchQueue.main)
             .sink { bidOrderItems in
                 self.bidOrderBook = bidOrderItems
+            }.store(in: &cancellable)
+        
+        // ticker present data 업데이트
+        receivedTickerPresentData
+            .receive(on: DispatchQueue.main)
+            .sink { tickerPresentData in
+                self.updateTickerData = tickerPresentData
             }.store(in: &cancellable)
     }
     
@@ -120,6 +127,10 @@ final class CoinViewModel: ObservableObject {
                 guard let tickerData: TickerData = try? JSONDecoder().decode(TickerData.self, from: data) else { return }
                 
                 let presentData = tickerData.transformToTickerPresentData()
+                
+                // CoinRepository.shared.updateTickerDict(presentData)
+                
+                self.receivedTickerPresentData.send(presentData)
                 
             default: return
             }

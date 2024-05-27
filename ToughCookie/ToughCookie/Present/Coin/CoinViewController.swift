@@ -13,15 +13,12 @@ import RxCocoa
 class CoinViewController: UIHostingController<CoinView> {
     
     let disposeBag = DisposeBag()
-    let viewModel: CoinViewModel
     
-    init(rootView: CoinView, viewModel: CoinViewModel) {
-        self.viewModel = viewModel
-        
+    override init(rootView: CoinView) {
         super.init(rootView: rootView)
     }
     
-    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+    required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -33,19 +30,11 @@ class CoinViewController: UIHostingController<CoinView> {
     
     func bind() {
         
-        // Coin VC -> 재연결
-        self.rx.viewWillAppearObservable
-            .subscribe(with: self) { owner, _ in
-                
-                owner.viewModel.connect()
-                
-            }.disposed(by: disposeBag)
-        
         // WebSocket 연결 해제
         self.rx.viewWillDisappearObservable
             .subscribe(with: self) { owner, _ in
                 
-                owner.viewModel.disconnect()
+                owner.rootView.viewModel.disconnect()
                 
             }.disposed(by: disposeBag)
     }

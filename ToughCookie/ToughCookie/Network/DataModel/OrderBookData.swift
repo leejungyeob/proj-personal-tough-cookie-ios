@@ -13,7 +13,7 @@ struct OrderBookData: Decodable {
     let code: String
     let totalAskSize: Double?
     let totalBidSize: Double?
-    let orderbookUnits: [OrderBookUnits]?
+    let orderbookUnits: [OrderBookUnits]
     
     enum CodingKeys: String, CodingKey {
         case type, code
@@ -36,4 +36,10 @@ struct OrderBookUnits: Decodable {
         case askSize = "ask_size"
         case bidSize = "bid_size"
     }
+}
+
+struct OrderBookItem: Hashable, Identifiable {
+    let id = UUID()
+    let price: Double
+    let size: Double
 }

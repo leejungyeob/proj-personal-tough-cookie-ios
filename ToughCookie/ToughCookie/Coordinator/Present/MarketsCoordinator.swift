@@ -52,11 +52,11 @@ extension MarketsCoordinator {
     
     func pushCoinVC(_ data: TickerPresentData) {
         
-        let rootView = CoinView()
-        let coinViewModel = CoinViewModel(coordinator: self, tickerPresentData: data)
-        coinViewModel.connect()
         
-        let coinViewController = CoinViewController(rootView: rootView, viewModel: coinViewModel)
+        let coinViewModel = CoinViewModel(coordinator: self, tickerPresentData: data)
+        let rootView = CoinView(viewModel: coinViewModel)
+        
+        let coinViewController = CoinViewController(rootView: rootView)
         
         self.navigationController.pushViewController(coinViewController, animated: true)
     }

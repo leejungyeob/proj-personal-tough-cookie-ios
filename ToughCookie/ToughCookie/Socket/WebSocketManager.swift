@@ -10,11 +10,11 @@ import Starscream
 
 class WebSocketManager {
     
-    static let shared = WebSocketManager()
+    // static let shared = WebSocketManager()
     
     private let websocket: WebSocket
     
-    private init() {
+    init() {
         
         let baseURL: URL = URL(string: "wss://api.upbit.com/websocket/v1")!
         let request = URLRequest(url: baseURL)

@@ -56,6 +56,14 @@ class MarketsViewController: BaseViewController<MarketsView> {
             self.layoutView.tableView.reloadData()
             self.viewModel.connect()
         }
+        
+        // foreground -> background : 소켓 연결해제
+        SceneDelegate.detectedEnterBackground = { [weak self] in
+            
+            guard let self else { return }
+            
+            self.viewModel.disconnect()
+        }
     }
     
     override func configureTableView() {
@@ -78,7 +86,7 @@ class MarketsViewController: BaseViewController<MarketsView> {
     override func bind() {
         
         // Coin VC -> 재연결
-        self.rx.viewDidAppearObservable
+        self.rx.viewWillAppearObservable
             .subscribe(with: self) { owner, _ in
                 
                 owner.viewModel.connect()

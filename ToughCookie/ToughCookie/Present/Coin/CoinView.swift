@@ -50,5 +50,8 @@ struct CoinView: View {
         .onAppear {
             viewModel.connect()
         }
+        .onDisappear {
+            viewModel.disconnect()
+        }
     }
 }

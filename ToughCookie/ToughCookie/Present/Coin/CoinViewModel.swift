@@ -18,6 +18,7 @@ final class CoinViewModel: ObservableObject {
     var tickerPresentData: TickerPresentData
     
     var repository: CoinRepository = CoinRepository.shared
+    let webSocket = WebSocketManager()
     
     @Published
     var askOrderBook: [OrderBookItem] = []
@@ -50,7 +51,7 @@ final class CoinViewModel: ObservableObject {
     func connect() {
         
         let codes = [tickerPresentData.code]
-        let socket = WebSocketManager.shared.connect() // 웹소켓 연결
+        let socket = webSocket.connect() // 웹소켓 연결
         
         socket.onEvent = { [weak self] event in
             
@@ -61,7 +62,7 @@ final class CoinViewModel: ObservableObject {
                 // 데이터 요청
             case .connected(_):
                 
-                WebSocketManager.shared.send("""
+                webSocket.send("""
                       [{"ticket":"test"},{"type":"orderbook","codes": \(codes)}]
                     """)
                 
@@ -89,6 +90,6 @@ final class CoinViewModel: ObservableObject {
     }
     
     func disconnect() {
-        WebSocketManager.shared.disconnect()
+        webSocket.disconnect()
     }
 }

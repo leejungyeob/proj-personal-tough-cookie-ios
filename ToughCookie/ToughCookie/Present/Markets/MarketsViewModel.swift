@@ -13,6 +13,7 @@ final class MarketsViewModel: ViewModelProtocol {
     
     var coordinator: Coordinator
     var repository: CoinRepository = CoinRepository.shared
+    let webSocket = WebSocketManager()
     
     let sortedTickerPresentData = PublishRelay<[TickerPresentData]>()
     
@@ -122,7 +123,7 @@ final class MarketsViewModel: ViewModelProtocol {
     func connect() {
         
         let codes = repository.marketData.map { return $0.market }
-        let socket = WebSocketManager.shared.connect() // 웹소켓 연결
+        let socket = webSocket.connect() // 웹소켓 연결
         
         socket.onEvent = { [weak self] event in
             
@@ -133,7 +134,7 @@ final class MarketsViewModel: ViewModelProtocol {
                 // 데이터 요청
             case .connected(_):
                 
-                WebSocketManager.shared.send("""
+                webSocket.send("""
                       [{"ticket":"test"},{"type":"ticker","codes": \(codes)}]
                     """)
                 
@@ -157,6 +158,6 @@ final class MarketsViewModel: ViewModelProtocol {
     }
     
     func disconnect() {
-        WebSocketManager.shared.disconnect()
+        webSocket.disconnect()
     }
 }

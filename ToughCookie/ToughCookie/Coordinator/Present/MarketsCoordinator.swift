@@ -43,11 +43,13 @@ extension MarketsCoordinator {
         
         let marketsViewModel = MarketsViewModel(coordinator: self)
         let marketsViewController = MarketsViewController(viewModel: marketsViewModel)
-        marketsViewModel.connect()
+        
+        marketsViewController.navigationItem.title = coordinatorType.title
+        let backButton = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+        backButton.tintColor = .white
+        marketsViewController.navigationItem.backBarButtonItem = backButton
         
         self.navigationController.pushViewController(marketsViewController, animated: false)
-        
-        self.navigationController.navigationBar.topItem?.title = coordinatorType.title
     }
     
     func pushCoinVC(_ data: TickerPresentData) {
@@ -56,7 +58,7 @@ extension MarketsCoordinator {
         let coinViewModel = CoinViewModel(coordinator: self, tickerPresentData: data)
         let rootView = CoinView(viewModel: coinViewModel)
         
-        let coinViewController = CoinViewController(rootView: rootView)
+        let coinViewController = CoinViewController(rootView: rootView, tickerPresentData: data)
         
         self.navigationController.pushViewController(coinViewController, animated: true)
     }

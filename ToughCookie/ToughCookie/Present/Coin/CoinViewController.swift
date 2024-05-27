@@ -13,12 +13,22 @@ import RxCocoa
 class CoinViewController: UIHostingController<CoinView> {
     
     let disposeBag = DisposeBag()
+    let tickerPresentData: TickerPresentData
     
-    override init(rootView: CoinView) {
+    init(rootView: CoinView, tickerPresentData: TickerPresentData) {
+        
+        self.tickerPresentData = tickerPresentData
+        
         super.init(rootView: rootView)
     }
     
     required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = CoinRepository.shared.getMarketDatumByTickerPresentData(tickerPresentData).koreanName
     }
 }

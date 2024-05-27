@@ -18,7 +18,8 @@ final class CoinViewModel: ObservableObject {
     var tickerPresentData: TickerPresentData
     
     var repository: CoinRepository = CoinRepository.shared
-    let webSocket = WebSocketManager()
+    let coinWebSocket = WebSocketManager()
+    let marketWebSocket = WebSocketManager()
     
     @Published
     var askOrderBook: [OrderBookItem] = []
@@ -50,8 +51,14 @@ final class CoinViewModel: ObservableObject {
     
     func connect() {
         
+        connectCoin()
+        connectMarket()
+    }
+    
+    func connectCoin() {
+        
         let codes = [tickerPresentData.code]
-        let socket = webSocket.connect() // 웹소켓 연결
+        let socket = coinWebSocket.connect() // 웹소켓 연결
         
         socket.onEvent = { [weak self] event in
             
@@ -62,7 +69,7 @@ final class CoinViewModel: ObservableObject {
                 // 데이터 요청
             case .connected(_):
                 
-                webSocket.send("""
+                coinWebSocket.send("""
                       [{"ticket":"test"},{"type":"orderbook","codes": \(codes)}]
                     """)
                 
@@ -89,7 +96,38 @@ final class CoinViewModel: ObservableObject {
         }
     }
     
+    func connectMarket() {
+     
+        let codes = [tickerPresentData.code]
+        let socket = marketWebSocket.connect() // 웹소켓 연결
+        
+        socket.onEvent = { [weak self] event in
+            
+            guard let self else { return }
+            
+            switch event {
+                
+                // 데이터 요청
+            case .connected(_):
+                
+                marketWebSocket.send("""
+                      [{"ticket":"test"},{"type":"ticker","codes": \(codes)}]
+                    """)
+                
+                // 데이터 수신
+            case .binary(let data):
+                
+                guard let tickerData: TickerData = try? JSONDecoder().decode(TickerData.self, from: data) else { return }
+                
+                let presentData = tickerData.transformToTickerPresentData()
+                
+            default: return
+            }
+        }
+    }
+    
     func disconnect() {
-        webSocket.disconnect()
+        coinWebSocket.disconnect()
+        marketWebSocket.disconnect()
     }
 }

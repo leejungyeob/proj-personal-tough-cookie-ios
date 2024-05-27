@@ -19,7 +19,9 @@ struct CoinView: View {
             marketDataView(viewModel: viewModel)
             Divider()
                 .background(Color.white)
-            TickerView(askOrderBook: viewModel.askOrderBook, bidOrderBook: viewModel.bidOrderBook)
+            TickerView(askOrderBook: viewModel.askOrderBook,
+                       bidOrderBook: viewModel.bidOrderBook,
+                       updateMarketData: viewModel.updateTickerData)
             
         }
         .task {
@@ -57,20 +59,24 @@ struct CoinView: View {
         
         
         return HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 3) {
                 Text(viewModel.updateTickerData.tradePrice.formatted())
                     .asDefaultText(fontSize: 15, textColor: signColor)
                 
-                HStack(spacing: 5) {
-                    Text("\(sign.sign)\(changeRate)%")
+                HStack(spacing: 0) {
+                    Text("\(sign.sign)\(changeRate.formatted())%")
                         .asDefaultText(fontSize: 13, textColor: signColor)
-                    Spacer().frame(width: 10)
+                        .frame(maxWidth: 60, alignment: .leading)
+                    
+                    Spacer().frame(width: 5)
                     
                     Image(systemName: changeImage)
                         .resizable()
                         .foregroundStyle(signColor)
                         .frame(width: 10, height: 10)
-                        
+                    
+                    Spacer().frame(width: 3)
+                    
                     Text("\(changePrice)")
                         .asDefaultText(fontSize: 13, textColor: signColor)
                 }

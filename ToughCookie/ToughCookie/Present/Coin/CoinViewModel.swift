@@ -15,10 +15,10 @@ final class CoinViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     private var coordinator: Coordinator
     
-    var tickerPresentData: TickerPresentData
+    var tickerPresentData: TickerPresentData    // MarketsVC에서 가져온 Data
     @Published var askOrderBook: [OrderBookItem] = []
     @Published var bidOrderBook: [OrderBookItem] = []
-    @Published var updateTickerData: TickerPresentData = .dummyData()
+    @Published var updateTickerData: TickerPresentData = .dummyData()   // WebSocket에서 업데이트한 Data
     
     private var repository: CoinRepository = CoinRepository.shared
     private let coinWebSocket = WebSocketManager()

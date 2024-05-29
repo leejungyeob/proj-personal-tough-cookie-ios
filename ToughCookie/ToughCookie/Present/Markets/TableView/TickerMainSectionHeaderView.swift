@@ -56,49 +56,59 @@ class TickerMainSectionHeaderView: UITableViewHeaderFooterView {
     
     func configure() {
         
-        
-        contentView.flex.direction(.row).paddingHorizontal(2.5%).justifyContent(.spaceBetween).define { flex in
+        contentView.flex.direction(.column).define { flex in
+            
+            flex.addItem().direction(.row).paddingHorizontal(2.5%).justifyContent(.spaceBetween).marginTop(5).define { flex in
+                
+                flex.addItem()
+                    .width(30%)
+                    .direction(.row).define { flex in
+                        
+                        flex.addItem(titleLanguageButton)
+                    }
+                
+                flex.addItem(tradePriceButton)
+                    .width(25%)
+                    .alignContent(.end)
+                
+                flex.addItem(changeButton)
+                    .width(20%)
+                
+                flex.addItem(accTradePriceButton)
+                    .width(20%)
+            }
             
             flex.addItem()
-                .width(30%)
-                .direction(.row).define { flex in
-                    
-                    flex.addItem(titleLanguageButton)
-                }
-            
-            flex.addItem(tradePriceButton)
-                .width(25%)
-                .alignContent(.end)
-            
-            flex.addItem(changeButton)
-                .width(20%)
-            
-            flex.addItem(accTradePriceButton)
-                .width(20%)
+                .marginTop(5)
+                .width(100%)
+                .height(0.5)
+                .backgroundColor(.darkGray)
         }
         
-        contentView.backgroundColor = .subBlue
+        // contentView.
+        
+        contentView.backgroundColor = .white
         
         let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 8)
         titleLanguageButton.sectionTitleButtion(title: "한글명",
                                                 image: UIImage(systemName: "arrow.left.arrow.right",
                                                                withConfiguration: imageConfiguration),
-                                                color: .white)
+                                                color: .black)
         
         tradePriceButton.sectionTitleButtion(title: "현재가",
                                              image: UIImage(systemName: "arrow.up",
                                                             withConfiguration: imageConfiguration),
-                                             color: .white)
+                                             color: .black)
         
         changeButton.sectionTitleButtion(title: "전일대비",
                                          image: UIImage(systemName: "arrow.up",
                                                         withConfiguration: imageConfiguration),
-                                         color: .white)
+                                         color: .black)
         
         accTradePriceButton.sectionTitleButtion(title: "누적대금",
                                                 image: UIImage(systemName: "arrow.up",
                                                                withConfiguration: imageConfiguration),
-                                                color: .white)
+                                                color: .black)
     }
     
     func updateTitleLanguage() {
@@ -109,7 +119,7 @@ class TickerMainSectionHeaderView: UITableViewHeaderFooterView {
         titleLanguageButton.sectionTitleButtion(title: curLanguageType == .korean ? "한글명" : "영문명",
                                                 image: UIImage(systemName: "arrow.left.arrow.right",
                                                                withConfiguration: imageConfiguration),
-                                                color: .white)
+                                                color: .black)
     }
     
     func updateSortedType() {

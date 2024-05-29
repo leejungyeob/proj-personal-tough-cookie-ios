@@ -29,16 +29,18 @@ struct TickerView: View {
                             LazyVStack(alignment: .trailing, spacing: 0) {
                                 
                                 Text(item.price.formatted())
-                                    .asDefaultText(fontSize: 13, textColor: .white)
+                                    .asDefaultText(fontSize: 13, textColor: .red)
+                                    .padding(EdgeInsets(top: 3, leading: 0, bottom: 1, trailing: 3))
                                 
                                 Text(item.size.formatted())
-                                    .asDefaultText(fontSize: 11, textColor: .white)
+                                    .asDefaultText(fontSize: 11, textColor: .black)
+                                    .padding(EdgeInsets(top: 1, leading: 0, bottom: 3, trailing: 3))
                                 
                                 Divider()
-                                    .background(.black)
+                                    .foregroundStyle(Color.white)
                             } // LazyVStack
                             .frame(maxWidth: .infinity)
-                            .border( isTradePrice(item: item) ? Color.white : Color.clear)
+                            .border( isTradePrice(item: item) ? Color.black : Color.clear)
                         } // ForEach
                     }// askOrderBook VStack
                     .background(Color.blue.opacity(0.2))
@@ -46,18 +48,21 @@ struct TickerView: View {
                     VStack(spacing: 0) {
                         ForEach(bidOrderBook, id: \.id) { item in
                             
-                            LazyVStack(alignment: .trailing) {
+                            LazyVStack(alignment: .trailing, spacing: 0) {
+                                
                                 Text(item.price.formatted())
-                                    .asDefaultText(fontSize: 13, textColor: .white)
+                                    .asDefaultText(fontSize: 13, textColor: .blue)
+                                    .padding(EdgeInsets(top: 3, leading: 0, bottom: 1, trailing: 3))
                                 
                                 Text(item.size.formatted())
-                                    .asDefaultText(fontSize: 11, textColor: .white)
+                                    .asDefaultText(fontSize: 11, textColor: .black)
+                                    .padding(EdgeInsets(top: 1, leading: 0, bottom: 3, trailing: 3))
                                 
                                 Divider()
-                                    .background(.black)
+                                    .background(Color.white)
                             } // LazyVStack
                             .frame(maxWidth: .infinity)
-                            .border( isTradePrice(item: item) ? Color.white : Color.clear)
+                            .border( isTradePrice(item: item) ? Color.black : Color.clear)
                         } // ForEach
                     } // bidOrderBook VStack
                     .background(Color.red.opacity(0.2))

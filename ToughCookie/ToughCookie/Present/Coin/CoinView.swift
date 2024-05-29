@@ -33,7 +33,7 @@ struct CoinView: View {
         .onDisappear {
             viewModel.disconnect()
         }
-        .background(Color.subBlue)
+        .background(Color.white)
     }
     
     //  마켓 데이터 뷰

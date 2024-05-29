@@ -45,8 +45,9 @@ extension MarketsCoordinator {
         let marketsViewController = MarketsViewController(viewModel: marketsViewModel)
         
         marketsViewController.navigationItem.title = coordinatorType.title
+        marketsViewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         let backButton = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
-        backButton.tintColor = .white
+        backButton.tintColor = .mainBlue
         marketsViewController.navigationItem.backBarButtonItem = backButton
         
         self.navigationController.pushViewController(marketsViewController, animated: false)

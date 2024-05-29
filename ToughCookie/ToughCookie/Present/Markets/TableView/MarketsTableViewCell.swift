@@ -32,7 +32,7 @@ class MarketsTableViewCell: BaseTableViewCell {
         
         [coinNameLabel, codeNameLabel, tradePriceLabel, changeRateLabel, changeRateLabel, accTradePrice24Label].forEach {
             $0.text = ""
-            $0.textColor = $0 == codeNameLabel ? .lightGray : .white
+            $0.textColor = $0 == codeNameLabel ? .lightGray : .black
             $0.layer.borderWidth = 0
         }
     }
@@ -59,26 +59,26 @@ class MarketsTableViewCell: BaseTableViewCell {
     
     override func configure() {
         
-        coinNameLabel.textColor = .white
-        coinNameLabel.font = .systemFont(ofSize: 13, weight: .thin)
+        coinNameLabel.textColor = .black
+        coinNameLabel.font = .systemFont(ofSize: 13, weight: .regular)
         
-        codeNameLabel.textColor = .lightGray
-        codeNameLabel.font = .systemFont(ofSize: 11, weight: .thin)
+        codeNameLabel.textColor = .darkGray
+        codeNameLabel.font = .systemFont(ofSize: 11, weight: .regular)
         
-        tradePriceLabel.textColor = .white
-        tradePriceLabel.font = .systemFont(ofSize: 13, weight: .thin)
+        tradePriceLabel.textColor = .black
+        tradePriceLabel.font = .systemFont(ofSize: 13, weight: .regular)
         
-        changeRateLabel.textColor = .white
-        changeRateLabel.font = .systemFont(ofSize: 13, weight: .thin)
+        changeRateLabel.textColor = .black
+        changeRateLabel.font = .systemFont(ofSize: 13, weight: .regular)
         
-        changePriceLabel.textColor = .white
-        changePriceLabel.font = .systemFont(ofSize: 11, weight: .thin)
+        changePriceLabel.textColor = .black
+        changePriceLabel.font = .systemFont(ofSize: 11, weight: .regular)
         
-        accTradePrice24Label.textColor = .white
-        accTradePrice24Label.font = .systemFont(ofSize: 13, weight: .thin)
+        accTradePrice24Label.textColor = .black
+        accTradePrice24Label.font = .systemFont(ofSize: 13, weight: .regular)
         
         
-        backgroundColor = .subBlue
+        backgroundColor = .white
     }
     
     override func configureLayout() {

@@ -77,9 +77,9 @@ extension SceneDelegate {
         // MARK: Navigation bar appearance
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
-        navigationBarAppearance.backgroundColor = .subBlue
+        navigationBarAppearance.backgroundColor = .white
         navigationBarAppearance.shadowColor = .clear
-        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.mainBlue]
         
         // 일반 네이게이션 바 appearance settings
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
@@ -100,7 +100,7 @@ extension SceneDelegate {
         // MARK: Tab bar appearance
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = .systemBlue
+        tabBarAppearance.backgroundColor = .mainBlue
         tabBarAppearance.shadowColor = .clear
         tabBarAppearance.inlineLayoutAppearance = tabBarItemAppearance
         tabBarAppearance.stackedLayoutAppearance = tabBarItemAppearance

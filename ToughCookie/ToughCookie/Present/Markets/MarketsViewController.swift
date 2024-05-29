@@ -38,7 +38,7 @@ class MarketsViewController: BaseViewController<MarketsView> {
         
         layoutView.tableView.sectionHeaderTopPadding = 0
         
-        let header = MarketsHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
+        let header = MarketsHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
         header.backgroundColor = .white
         header.searchBar.delegate = self
         header.searchBar.searchTextField.delegate = self

@@ -142,7 +142,7 @@ enum CoinSortedType {
         
         switch self {
         case .nothing, .accTradePrice ,.change ,.tradePrice:
-            return UIColor.white
+            return UIColor.black
         default:
             return UIColor.systemYellow
         }

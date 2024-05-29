@@ -32,7 +32,7 @@ class MarketsTableViewCell: BaseTableViewCell {
         
         [coinNameLabel, codeNameLabel, tradePriceLabel, changeRateLabel, changeRateLabel, accTradePrice24Label].forEach {
             $0.text = ""
-            $0.textColor = $0 == codeNameLabel ? .lightGray : .black
+            $0.textColor = $0 == codeNameLabel ? .darkGray : .black
             $0.layer.borderWidth = 0
         }
     }
@@ -78,7 +78,7 @@ class MarketsTableViewCell: BaseTableViewCell {
         accTradePrice24Label.font = .systemFont(ofSize: 13, weight: .regular)
         
         
-        backgroundColor = .white
+        backgroundColor = .clear
     }
     
     override func configureLayout() {

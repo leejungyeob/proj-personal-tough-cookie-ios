@@ -139,19 +139,19 @@ class TickerMainSectionHeaderView: UITableViewHeaderFooterView {
             changeButton.sectionTitleButtion(title: "전일대비",
                                              image: UIImage(systemName: "arrow.up",
                                                             withConfiguration: imageConfiguration),
-                                             color: .white)
+                                             color: .black)
             
             accTradePriceButton.sectionTitleButtion(title: "누적대금",
                                                     image: UIImage(systemName: "arrow.up",
                                                                    withConfiguration: imageConfiguration),
-                                                    color: .white)
+                                                    color: .black)
             
         case .change, .changeASC, .changeDESC:
             
             tradePriceButton.sectionTitleButtion(title: "현재가",
                                                  image: UIImage(systemName: "arrow.up",
                                                                 withConfiguration: imageConfiguration),
-                                                 color: .white)
+                                                 color: .black)
             
             changeButton.sectionTitleButtion(title: curSortedType.title,
                                                  image: UIImage(systemName: curSortedType.imageName,
@@ -161,19 +161,19 @@ class TickerMainSectionHeaderView: UITableViewHeaderFooterView {
             accTradePriceButton.sectionTitleButtion(title: "누적대금",
                                                     image: UIImage(systemName: "arrow.up",
                                                                    withConfiguration: imageConfiguration),
-                                                    color: .white)
+                                                    color: .black)
             
         case .accTradePrice, .accTradePriceASC, .accTradePriceDESC:
             
             tradePriceButton.sectionTitleButtion(title: "현재가",
                                                  image: UIImage(systemName: "arrow.up",
                                                                 withConfiguration: imageConfiguration),
-                                                 color: .white)
+                                                 color: .black)
             
             changeButton.sectionTitleButtion(title: "전일대비",
                                              image: UIImage(systemName: "arrow.up",
                                                             withConfiguration: imageConfiguration),
-                                             color: .white)
+                                             color: .black)
             
             accTradePriceButton.sectionTitleButtion(title: curSortedType.title,
                                                  image: UIImage(systemName: curSortedType.imageName,

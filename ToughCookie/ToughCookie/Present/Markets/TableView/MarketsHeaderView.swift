@@ -13,12 +13,14 @@ class MarketsHeaderView: UIView {
     
     let flexView = UIView()
     let searchBar = UISearchBar()
+    let lineLine = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .clear
         flexView.backgroundColor = .clear
+        lineLine.backgroundColor = .mainBlue
         
         let customWhite = UIColor.white.withAlphaComponent(0.6)
         searchBar.searchTextField.backgroundColor = .clear
@@ -37,13 +39,15 @@ class MarketsHeaderView: UIView {
                                                                              attributes: [.foregroundColor : UIColor.mainBlue])
         
         addSubview(flexView)
+        flexView.addSubview(searchBar)
+        flexView.addSubview(lineLine)
         
         flexView.flex.direction(.column).define { flex in
             
             flex.addItem(searchBar)
             
-            flex.addItem()
-                .width(100%)
+            flex.addItem(lineLine)
+                // .width(100%)
                 .height(1)
                 .backgroundColor(.mainBlue)
         }
@@ -53,21 +57,10 @@ class MarketsHeaderView: UIView {
         super.init(coder: coder)
     }
     
-    // override func layoutSubviews() {
-    //     super.layoutSubviews()
-    //     
-    //     searchBar.pin.all()
-    //     self.flex.layout(mode: .adjustHeight)
-    // }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         flexView.pin.all()
         flexView.flex.layout()
-        
-        // self.pin.all()
-        // 
-        // layout()
     }
 }
